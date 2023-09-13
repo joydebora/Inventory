@@ -60,7 +60,7 @@ Membuat file baru bernama "main.html" di dalam direktori "templates" yang telah 
 ```
 
 ## 3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
-urls.py in direktori inventory:
+Untuk melakukan routing agar dapat menjalankan aplikasi main, tambahkan kode pada "urls.py" dalam direktori "inventory" sebagai berikut:
 ```
 from django.contrib import admin
 from django.urls import path, include
@@ -70,6 +70,7 @@ urlpatterns = [
     path('main/', include('main.urls')),
 ]
 ```
+Mengaktifkan server Django untuk nantinya menjalankan aplikasi dan dapat diakses melalui browser web. 
 ```
 python manage.py runserver
 ```
@@ -79,7 +80,7 @@ python manage.py runserver
 - amount sebagai jumlah item dengan tipe IntegerField.
 - description sebagai deskripsi item dengan tipe TextField.\
 \
-models.py in directori main:
+Untuk mendefinisikan model data dalam aplikasi Django, tambahkan kode pada "models.py" dalam direktori "main":
 ```
 from django.db import models
 
@@ -90,15 +91,17 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=255)
 ```
+Membuat migrasi untuk menggambarkan struktur tabel dalam database.
 ```
 python manage.py makemigrations
 ```
+Menerapkan migrasi tersebut ke database.
 ```
 python manage.py migrate
 ```
 
 ## 5. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
-views.py in direktori main:
+Untuk mendefinisikan sebuah view dalam aplikasi Django, tambahkan kode pada "views.py" dalam direktori "main":
 ```
 from django.shortcuts import render
 
@@ -113,7 +116,7 @@ def show_main(request):
 ```
 
 ## 6. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
-make file urls.py in direktori main:
+Untuk mengimpor fungsi view "show_main" dari modul "main.views", tambahkan kode pada "urls.py" dalam direktori "main":
 ```
 from django.urls import path
 from main.views import show_main
@@ -137,48 +140,37 @@ Masukkan nama aplikasi yang akan menjadi nama domain situs web aplikasimu, yaitu
 Centang bagian HTTP Listener on PORT dan klik Deploy App untuk memulai proses deployment aplikasi.\
 
 ## 8. Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
+Menginisialisasi repositori Git di direktori saat ini.
 ```
 git init
 ```
-```
-git config user.name "joydebora"
-```
-```
-git config user.email "joy.debora@ui.ac.id"
-```
-```
-git config --global user.name "joydebora"
-```
-```
-git config --global user.email "joy.debora@ui.ac.id"
-```
-```
-git config --list --local
-```
-```
-echo "# Inventory" >> README.md
-```
-```
-git init
-```
+Menambahkan file "README.md" pada git.
 ```
 git add README.md
 ```
+Menampilkan status repositori Git. Git status akan menunjukkan file-file yang telah diubah atau ditambahkan.
+```
+git status
+```
+Membuat commit dengan pesan commit "Inventory", untuk menyimpan perubahan yang dilakukan.
 ```
 git commit -m "Inventory"
 ```
+Mengganti nama branch default dari "master" ke "main".
 ```
 git branch -M main
 ```
+Menghubungkan repositori lokal dengan repositori remote di GitHub.
 ```
 git remote add origin https://github.com/joydebora/Inventory.git
 ```
+Mengirimkan perubahan yang telah di-commit dari repositori lokal ke repositori remote di GitHub. 
 ```
 git push -u origin main
 ```
 
 ## 9. Testing Dasar (Bonus)
-tests.py in direktori main:
+Untuk membuat unit tes untuk model Product dalam aplikasi yang telah dibuat, tambhakan kode pada "tests.py" dalam direktori "main":
 ```
 from django.test import TestCase
 from .models import Product
@@ -205,10 +197,17 @@ class PetkeeperInventoryTest(TestCase):
         self.assertEqual(makanan_kucing.description, "Makanan kucing premium")
         self.assertEqual(gembok_kandang.description, "Gembok anti-korosi")
 ```
+Penjelasan:\
+- PetkeeperInventoryTest adalah kelas tes yang diturunkan dari TestCase yang disediakan oleh Django. Ini adalah kelas utama untuk menulis tes dalam Django.
+- setUp adalah metode yang dijalankan sebelum setiap tes. Di dalamnya, terdapat dua objek Product dengan data uji coba.
+- test_item_create adalah metode tes pertama. Di dalamnya, akan mengambil dua objek Product berdasarkan nama dan kemudian menggunakan pernyataan self.assertEqual untuk memeriksa apakah atribut amount dan category sesuai dengan yang diharapkan. 
+- test_item_description adalah metode tes kedua. Di dalamnya, akan mengambil lagi dua objek Product berdasarkan nama dan kemudian menggunakan pernyataan self.assertEqual untuk memeriksa apakah atribut description sesuai dengan yang diharapkan.
+
+Jalankan tes.
 ```
 python manage.py test
 ```
-output:
+Jika tes berhasil dilakukan, maka akan mengeluarkan informasi berikut:
 ```
 Found 2 test(s).
 Creating test database for alias 'default'...
