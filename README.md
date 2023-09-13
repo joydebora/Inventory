@@ -4,7 +4,7 @@
 **Kelas: PBP D**
 
 # CHECKLIST TUGAS
-### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
+#### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
 ## 1. Membuat sebuah proyek Django baru.
 Membuat virtual environment dengan nama "env".
 ``` 
