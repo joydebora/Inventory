@@ -1,6 +1,6 @@
 # TUGAS 2
-**Nama: Joy Debora Sitorus**
-**NPM: 2206082991**
+**Nama: Joy Debora Sitorus**\
+**NPM: 2206082991**\
 **Kelas: PBP D**
 
 # CHECKLIST TUGAS
@@ -11,7 +11,7 @@ python -m venv env
 ``` 
 env\Scripts\activate.bat 
 ```
-make requirements.txt --
+make requirements.txt:
 ```
 django
 gunicorn
@@ -45,7 +45,7 @@ python manage.py startapp main
 ```
 add INSTALLED_APPS = [..., 'main', ...] in settings.py\
 make new direktori templates in direktori main\
-make new file main.html in direktori templates --
+make new file main.html in direktori templates:
 ```
 <h1><span style="color: blueviolet">{{ project }}</span></h1>
 <h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>
@@ -54,7 +54,7 @@ make new file main.html in direktori templates --
 ```
 
 ## 3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
-urls.py in direktori inventory --
+urls.py in direktori inventory:
 ```
 from django.contrib import admin
 from django.urls import path, include
@@ -73,7 +73,7 @@ python manage.py runserver
 - amount sebagai jumlah item dengan tipe IntegerField.
 - description sebagai deskripsi item dengan tipe TextField.\
 \
-models.py in directori main --
+models.py in directori main:
 ```
 from django.db import models
 
@@ -92,7 +92,7 @@ python manage.py migrate
 ```
 
 ## 5. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
-views.py in direktori main --
+views.py in direktori main:
 ```
 from django.shortcuts import render
 
@@ -107,7 +107,7 @@ def show_main(request):
 ```
 
 ## 6. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
-make file urls.py in direktori main --
+make file urls.py in direktori main:
 ```
 from django.urls import path
 from main.views import show_main
@@ -172,7 +172,7 @@ git push -u origin main
 ```
 
 ## 9. Testing Dasar (Bonus)
-tests.py in direktori main --
+tests.py in direktori main:
 ```
 from django.test import TestCase
 from .models import Product
@@ -202,16 +202,18 @@ class PetkeeperInventoryTest(TestCase):
 ```
 python manage.py test
 ```
-output --\
-Found 2 test(s).\
-Creating test database for alias 'default'...\
-System check identified no issues (0 silenced).\
-..\
-----------------------------------------------------------------------\
-Ran 2 tests in 0.002s\
-\
-OK\
-Destroying test database for alias 'default'... \
+output:
+```
+Found 2 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK
+Destroying test database for alias 'default'... 
+```
 
 ## Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 ![Alt text](<MTV Framework.png>)
@@ -232,7 +234,7 @@ Model-View-Controller (MVC), Model-View-Template (MVT), dan Model-View-ViewModel
 Model: Representasi dari data dan bisnis logic aplikasi. Model mengelola data dan mengatur aturan bisnis.\
 View: Bertanggung jawab untuk menampilkan data kepada pengguna dan menerima input dari mereka. Ini adalah bagian yang terlihat oleh pengguna.\
 Controller: Berfungsi sebagai perantara antara Model dan View. Mengatur alur aplikasi, menghubungkan tindakan pengguna dengan perubahan di Model, dan mengupdate View.\
-Perbedaan Utama: Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View.\ Model dan View tidak berinteraksi langsung satu sama lain.
+Perbedaan Utama: Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View. Model dan View tidak berinteraksi langsung satu sama lain.
 
 2. MVT (Model-View-Template):\
 Model: Sama seperti dalam MVC, ini adalah bagian yang menangani data dan bisnis logic.\
