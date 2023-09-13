@@ -7,13 +7,15 @@
 ## 1. Membuat sebuah proyek Django baru.
 `python -m venv env`
 `env\Scripts\activate.bat`
-(make requirements.txt --\
-django\
-gunicorn\
-whitenoise\
-psycopg2-binary\
-requests\
-urllib3)\
+make requirements.txt --\
+```
+django
+gunicorn
+whitenoise
+psycopg2-binary
+requests
+urllib3
+```
 pip install -r requirements.txt\
 django-admin startproject inventory .\
 (add ALLOWED_HOSTS = ["*"] in settings.py)\
