@@ -28,10 +28,10 @@ python manage.py startapp main
 (add INSTALLED_APPS = [..., 'main', ...] in settings.py)
 (make new direktori templates in direktori main)
 (make new file main.html in direktori templates --
-`<h1><span style="color: blueviolet">{{ project }}</span></h1>
-<h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>
-<h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>
-<h2>Class: <span style="color: lightpink">{{ class }}</span></h2> )`
+`<h1><span style="color: blueviolet">{{ project }}</span></h1>`
+`<h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>`
+`<h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>`
+`<h2>Class: <span style="color: lightpink">{{ class }}</span></h2> )`
 
 ## 3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
 (urls.py in direktori inventory --
