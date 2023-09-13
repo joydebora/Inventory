@@ -224,9 +224,9 @@ Destroying test database for alias 'default'...
 ## Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 ![Framework](https://i.postimg.cc/KcftbPHR/MTV-Framework.png)
 Penjelasan:
-- File urls.py mengarahkan permintaan HTTP dan diteruskan ke view yang tepat.\
-- File views.py mengambil permintaan melalui template, berinteraksi dengan model jika diperlukan, dan merender template HTML.\
-- File models.py mendefinisikan struktur data dan berinteraksi dengan database.\
+- File urls.py mengarahkan permintaan HTTP dan diteruskan ke view yang tepat.
+- File views.py mengambil permintaan melalui template, berinteraksi dengan model jika diperlukan, dan merender template HTML.
+- File models.py mendefinisikan struktur data dan berinteraksi dengan database.
 - File HTML digunakan untuk merancang tampilan halaman web yang akan ditampilkan kepada user, dan mereka dapat menerima data dari views untuk menampilkan informasi yang diperlukan.
 
 ## Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
@@ -244,17 +244,19 @@ Model-View-Controller (MVC), Model-View-Template (MVT), dan Model-View-ViewModel
 1. MVC (Model-View-Controller)\
 Model: Representasi dari data dan logic aplikasi. Model mengelola data dan mengatur aturan aplikasi.\
 View: Bertanggung jawab untuk menampilkan data kepada pengguna dan menerima input dari mereka. View adalah bagian yang terlihat oleh pengguna.\
-Controller: Berfungsi sebagai perantara antara Model dan View. Mengatur alur aplikasi, menghubungkan tindakan pengguna dengan perubahan di Model, dan mengupdate View.\
-Perbedaan Utama: Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View. Model dan View tidak berinteraksi langsung satu sama lain.
+Controller: Berfungsi sebagai perantara antara Model dan View. Mengatur alur aplikasi, menghubungkan tindakan pengguna dengan perubahan di Model, dan mengupdate View.
 
 2. MVT (Model-View-Template)\
 Model: Sama seperti dalam MVC, model adalah bagian yang menangani data dan logic aplikasi.\
 View: Bertanggung jawab untuk menampilkan data kepada pengguna, tetapi dalam Django (sebuah framework Python yang menggunakan MVT), View juga mengatur logika aplikasi.\
-Template: Template adalah bagian yang mirip dengan View dalam MVC. Template mengontrol tampilan halaman web dan cara data ditampilkan kepada pengguna.\
-Perbedaan Utama: Dalam MVT (khususnya dalam Django), View dan Template berperan lebih terintegrasi dalam mengelola tampilan dan logika aplikasi.
+Template: Template adalah bagian yang mirip dengan View dalam MVC. Template mengontrol tampilan halaman web dan cara data ditampilkan kepada pengguna.
 
 3. MVVM (Model-View-ViewModel)\
 Model: Seperti dalam MVC dan MVT, Model berhubungan dengan data dan logic aplikasi.\
 View: View adalah bagian yang menampilkan data kepada pengguna, mirip dengan View dalam MVC dan MVT.\
-ViewModel: ViewModel adalah bagian yang berfungsi sebagai penghubung antara Model dan View. Ini mempersiapkan data dari Model untuk ditampilkan di View dan mengelola tindakan pengguna yang mempengaruhi Model.\
-Perbedaan Utama: Dalam MVVM, ViewModel mengambil peran yang lebih kuat dalam mengelola interaksi antara View dan Model. ViewModel memungkinkan untuk mengikat data langsung ke tampilan tanpa melibatkan logika aplikasi di dalam View.
+ViewModel: ViewModel adalah bagian yang berfungsi sebagai penghubung antara Model dan View. Ini mempersiapkan data dari Model untuk ditampilkan di View dan mengelola tindakan pengguna yang mempengaruhi Model.
+
+Perbedaan MVC, MVT, dan MVVM:
+- Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View. Model dan View tidak berinteraksi langsung satu sama lain.
+- Dalam MVT (khususnya dalam Django), View dan Template berperan lebih terintegrasi dalam mengelola tampilan dan logika aplikasi.
+- Dalam MVVM, ViewModel mengambil peran yang lebih kuat dalam mengelola interaksi antara View dan Model. ViewModel memungkinkan untuk mengikat data langsung ke tampilan tanpa melibatkan logika aplikasi di dalam View.
