@@ -5,13 +5,15 @@
 
 # CHECKLIST TUGAS
 ## 1. Membuat sebuah proyek Django baru.
+Membuat virtual environment dengan nama "env".
 ``` 
 python -m venv env
 ```
+Mengaktifkan virtual environment yang telah dibuat sebelumnya. Ketika virtual environment aktif, semua perintah Python dan pip yang akan dijalankan akan terisolasi.
 ``` 
 env\Scripts\activate.bat 
 ```
-make requirements.txt:
+Membuat file requirements.txt dan menambahkan daftar dependensi yang dibutuhkan oleh proyek Django.
 ```
 django
 gunicorn
@@ -20,18 +22,22 @@ psycopg2-binary
 requests
 urllib3
 ```
+Menginstal semua dependensi tersebut ke dalam virtual environment.
 ```
 pip install -r requirements.txt
 ```
+Membuat proyek Django dengan nama "inventory".
 ```
 django-admin startproject inventory .
 ```
-add ALLOWED_HOSTS = ["*"] in settings.py
+Menambahkan konfigurasi ALLOWED_HOSTS = ["*"] ke dalam berkas settings.py proyek Django. Pengaturan ini memungkinkan Django untuk menerima permintaan dari semua host.\
+Menjalankan server pengembangan Django.\
 ```
 python manage.py runserver
 ```
-open http://localhost:8000, if there's rocket, then Django app successfully made\
-press ctrl+c in command prompt
+Membuka browser web http://localhost:8000 untuk memeriksa apakah proyek Django telah berhasil dibuat. Jika terlihat ikon roket, maka proyek Django telah aktif.\
+Menekan tombol Ctrl+C dalam jendela command prompt untuk menghentikan server pengembangan Django.\
+Menonaktifkan virtual environment yang telah diaktifkan sebelumnya.\
 ```
 deactivate
 ```
