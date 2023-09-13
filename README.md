@@ -45,15 +45,13 @@ deactivate
 ```
 
 ## 2. Membuat aplikasi dengan nama main pada proyek tersebut.
-```
-env\Scripts\activate.bat
-```
+Membuat aplikasi Django baru dengan nama "main".
 ```
 python manage.py startapp main
 ```
-add INSTALLED_APPS = [..., 'main', ...] in settings.py\
-make new direktori templates in direktori main\
-make new file main.html in direktori templates:
+Menambahkan INSTALLED_APPS = [..., 'main', ...] dalam berkas settings.py.\
+Membuat direktori baru bernama "templates" di dalam direktori "main".\
+Membuat file baru bernama "main.html" di dalam direktori "templates" yang telah dibuat sebelumnya, dengan isi:
 ```
 <h1><span style="color: blueviolet">{{ project }}</span></h1>
 <h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>
