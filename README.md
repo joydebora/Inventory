@@ -72,6 +72,7 @@ python manage.py runserver
 - name sebagai nama item dengan tipe CharField.
 - amount sebagai jumlah item dengan tipe IntegerField.
 - description sebagai deskripsi item dengan tipe TextField.\
+\
 models.py in directori main --
 ```
 from django.db import models
