@@ -1,10 +1,10 @@
 # TUGAS 2
 **Nama: Joy Debora Sitorus**\
 **NPM: 2206082991**\
-**Kelas: PBP D**\
-**Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/ **
+**Kelas: PBP D**
 
 # CHECKLIST TUGAS
+### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
 ## 1. Membuat sebuah proyek Django baru.
 Membuat virtual environment dengan nama "env".
 ``` 
