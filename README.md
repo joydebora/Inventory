@@ -71,7 +71,7 @@ python manage.py runserver
 ## 4. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
 - name sebagai nama item dengan tipe CharField.
 - amount sebagai jumlah item dengan tipe IntegerField.
-- description sebagai deskripsi item dengan tipe TextField.
+- description sebagai deskripsi item dengan tipe TextField.\
 models.py in directori main --
 ```
 from django.db import models
