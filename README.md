@@ -237,19 +237,19 @@ Dalam pengembangan aplikasi yang cukup kompleks atau yang bekerja dengan beberap
 Model-View-Controller (MVC), Model-View-Template (MVT), dan Model-View-ViewModel (MVVM) adalah pola desain (design pattern) yang digunakan dalam pengembangan perangkat lunak untuk memisahkan berbagai komponen dalam aplikasi. Di bawah ini adalah penjelasan singkat tentang masing-masing dari mereka dan perbedaannya:
 
 1. MVC (Model-View-Controller)\
-Model: Representasi dari data dan bisnis logic aplikasi. Model mengelola data dan mengatur aturan bisnis.\
-View: Bertanggung jawab untuk menampilkan data kepada pengguna dan menerima input dari mereka. Ini adalah bagian yang terlihat oleh pengguna.\
+Model: Representasi dari data dan logic aplikasi. Model mengelola data dan mengatur aturan aplikasi.\
+View: Bertanggung jawab untuk menampilkan data kepada pengguna dan menerima input dari mereka. View adalah bagian yang terlihat oleh pengguna.\
 Controller: Berfungsi sebagai perantara antara Model dan View. Mengatur alur aplikasi, menghubungkan tindakan pengguna dengan perubahan di Model, dan mengupdate View.\
 Perbedaan Utama: Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View. Model dan View tidak berinteraksi langsung satu sama lain.
 
 2. MVT (Model-View-Template)\
-Model: Sama seperti dalam MVC, ini adalah bagian yang menangani data dan bisnis logic.\
+Model: Sama seperti dalam MVC, model adalah bagian yang menangani data dan logic aplikasi.\
 View: Bertanggung jawab untuk menampilkan data kepada pengguna, tetapi dalam Django (sebuah framework Python yang menggunakan MVT), View juga mengatur logika aplikasi.\
-Template: Ini adalah bagian yang mirip dengan View dalam MVC. Template mengontrol tampilan halaman web dan cara data ditampilkan kepada pengguna.\
+Template: Template adalah bagian yang mirip dengan View dalam MVC. Template mengontrol tampilan halaman web dan cara data ditampilkan kepada pengguna.\
 Perbedaan Utama: Dalam MVT (khususnya dalam Django), View dan Template berperan lebih terintegrasi dalam mengelola tampilan dan logika aplikasi.
 
 3. MVVM (Model-View-ViewModel)\
-Model: Seperti dalam MVC dan MVT, Model berhubungan dengan data dan bisnis logic.\
-View: Ini adalah bagian yang menampilkan data kepada pengguna, mirip dengan View dalam MVC dan MVT.\
+Model: Seperti dalam MVC dan MVT, Model berhubungan dengan data dan logic aplikasi.\
+View: View adalah bagian yang menampilkan data kepada pengguna, mirip dengan View dalam MVC dan MVT.\
 ViewModel: ViewModel adalah bagian yang berfungsi sebagai penghubung antara Model dan View. Ini mempersiapkan data dari Model untuk ditampilkan di View dan mengelola tindakan pengguna yang mempengaruhi Model.\
-Perbedaan Utama: Dalam MVVM, ViewModel mengambil peran yang lebih kuat dalam mengelola interaksi antara View dan Model. ViewModel memungkinkan untuk mengikat data langsung ke tampilan tanpa melibatkan logika bisnis di dalam View.
+Perbedaan Utama: Dalam MVVM, ViewModel mengambil peran yang lebih kuat dalam mengelola interaksi antara View dan Model. ViewModel memungkinkan untuk mengikat data langsung ke tampilan tanpa melibatkan logika aplikasi di dalam View.
