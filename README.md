@@ -1,10 +1,10 @@
-TUGAS 2
-Nama: Joy Debora Sitorus
-NPM: 2206082991
-Kelas: PBP D
+# TUGAS 2
+**Nama: Joy Debora Sitorus**
+**NPM: 2206082991**
+**Kelas: PBP D**
 
-CHECKLIST TUGAS
-1. Membuat sebuah proyek Django baru.
+# CHECKLIST TUGAS
+## 1. Membuat sebuah proyek Django baru.
 python -m venv env
 env\Scripts\activate.bat
 (make requirements.txt --
@@ -22,7 +22,7 @@ python manage.py runserver
 (press ctrl+c in command prompt)
 deactivate
 
-2. Membuat aplikasi dengan nama main pada proyek tersebut.
+## 2. Membuat aplikasi dengan nama main pada proyek tersebut.
 env\Scripts\activate.bat
 python manage.py startapp main
 (add INSTALLED_APPS = [..., 'main', ...] in settings.py)
@@ -33,7 +33,7 @@ python manage.py startapp main
 <h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>
 <h2>Class: <span style="color: lightpink">{{ class }}</span></h2> )
 
-3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
+## 3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
 (urls.py in direktori inventory --
 from django.contrib import admin
 from django.urls import path, include
@@ -43,7 +43,7 @@ urlpatterns = [
 ] )
 python manage.py runserver
 
-4. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
+## 4. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
 - name sebagai nama item dengan tipe CharField.
 - amount sebagai jumlah item dengan tipe IntegerField.
 - description sebagai deskripsi item dengan tipe TextField.
@@ -58,7 +58,7 @@ class Product(models.Model):
 python manage.py makemigrations
 python manage.py migrate
 
-5.  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
+## 5. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
 (views.py in direktori main --
 from django.shortcuts import render
 def show_main(request):
@@ -70,7 +70,7 @@ def show_main(request):
     }
     return render(request, "main.html", context) )
 
-6.  Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
+## 6. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
 (make file urls.py in direktori main --
 from django.urls import path
 from main.views import show_main
@@ -79,7 +79,7 @@ urlpatterns = [
     path('', show_main, name='show_main'),
 ] )
 
-7. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+## 7. Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 Sign in menggunakan akun GitHub pada Adaptable.io
 Jika sudah sign in, tekan tombol New App, pilih Connect an Existing Repository 
 Pilihlah repositori proyek inventory sebagai basis aplikasi yang akan di-deploy
@@ -91,7 +91,7 @@ Pada bagian Start Command masukkan perintah python manage.py migrate && gunicorn
 Masukkan nama aplikasi yang akan menjadi nama domain situs web aplikasimu, yaitu joy-petkeeper-inventory
 Centang bagian HTTP Listener on PORT dan klik Deploy App untuk memulai proses deployment aplikasi.
 
-8. Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
+## 8. Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
 cd inventory
 git init
 git config user.name "joydebora"
@@ -107,7 +107,7 @@ git branch -M main
 git remote add origin https://github.com/joydebora/Inventory.git
 git push -u origin main
 
-9. Testing Dasar (Bonus)
+## 9. Testing Dasar (Bonus)
 (tests.py in direktori main --
 from django.test import TestCase
 from .models import Product
@@ -145,10 +145,10 @@ Ran 2 tests in 0.002s
 OK
 Destroying test database for alias 'default'... )
 
-Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+## Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+![![Alt text](<MTV Framework.png>)](https://drive.google.com/file/d/1wSCG54iV7lFmc4jGcUHdaHX2qrHPCSJm/view?usp=sharing)
 
-
-Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+## Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Kita menggunakan virtual environment karena:
 1. Dependensi proyek --agar setiap proyek memiliki lingkungan kerja terisolasi. Ini seperti memiliki rak khusus untuk setiap proyek, sehingga kita tidak mencampuradukkan alat dan bahan antara proyek-proyek yang berbeda.
 2. Menghindari konflik --virtual environment juga membantu dalam menghindari konflik versi. Kita bisa memiliki versi berbeda dari alat yang sama untuk setiap proyek tanpa menyebabkan masalah di proyek lain.
@@ -157,7 +157,7 @@ Kita menggunakan virtual environment karena:
 
 Dalam pengembangan aplikasi yang cukup kompleks atau yang bekerja dengan beberapa proyek sekaligus, penggunaan virtual environment menjadi keharusan untuk menjaga kerapihandan dan kebersihan proyek. Jika kita tidak menggunakan virtual environment, maka dalam prosesnya kita dapat menghadapi sejumlah masalah yang melibatkan konflik dependensi, kesulitan dalam mengelola versi Python, dan kesulitan dalam mengisolasi proyek dari sistem global host. Oleh karena itu, sangat disarankan untuk melakukan penggunaan virtual environment saat mengembangkan aplikasi web, terutama yang berbasis Django atau proyek Python lainnya.
 
-Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+## Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 Model-View-Controller (MVC), Model-View-Template (MVT), dan Model-View-ViewModel (MVVM) adalah pola desain (design pattern) yang digunakan dalam pengembangan perangkat lunak untuk memisahkan berbagai komponen dalam aplikasi. Di bawah ini adalah penjelasan singkat tentang masing-masing dari mereka dan perbedaannya:
 
 1. MVC (Model-View-Controller):
