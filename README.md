@@ -37,25 +37,36 @@ deactivate
 ```
 
 ## 2. Membuat aplikasi dengan nama main pada proyek tersebut.
+```
 env\Scripts\activate.bat
+```
+```
 python manage.py startapp main
-(add INSTALLED_APPS = [..., 'main', ...] in settings.py)
-(make new direktori templates in direktori main)
-(make new file main.html in direktori templates --
-`<h1><span style="color: blueviolet">{{ project }}</span></h1>`
-`<h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>`
-`<h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>`
-`<h2>Class: <span style="color: lightpink">{{ class }}</span></h2> )`
+```
+add INSTALLED_APPS = [..., 'main', ...] in settings.py\
+make new direktori templates in direktori main\
+make new file main.html in direktori templates --
+```
+<h1><span style="color: blueviolet">{{ project }}</span></h1>
+<h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>
+<h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>
+<h2>Class: <span style="color: lightpink">{{ class }}</span></h2>
+```
 
 ## 3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
-(urls.py in direktori inventory --
+urls.py in direktori inventory --
+```
 from django.contrib import admin
 from django.urls import path, include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('main.urls')),
-] )
+]
+```
+```
 python manage.py runserver
+```
 
 ## 4. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
 - name sebagai nama item dengan tipe CharField.
