@@ -31,13 +31,15 @@ Membuat proyek Django dengan nama "inventory".
 django-admin startproject inventory .
 ```
 Menambahkan konfigurasi ALLOWED_HOSTS = ["*"] ke dalam berkas settings.py proyek Django. Pengaturan ini memungkinkan Django untuk menerima permintaan dari semua host.\
-Menjalankan server pengembangan Django.\
+
+Menjalankan server pengembangan Django.
 ```
 python manage.py runserver
 ```
 Membuka browser web http://localhost:8000 untuk memeriksa apakah proyek Django telah berhasil dibuat. Jika terlihat ikon roket, maka proyek Django telah aktif.\
 Menekan tombol Ctrl+C dalam jendela command prompt untuk menghentikan server pengembangan Django.\
-Menonaktifkan virtual environment yang telah diaktifkan sebelumnya.\
+
+Menonaktifkan virtual environment yang telah diaktifkan sebelumnya.
 ```
 deactivate
 ```
