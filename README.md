@@ -223,10 +223,11 @@ Destroying test database for alias 'default'...
 
 ## Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 ![Framework](https://i.postimg.cc/KcftbPHR/MTV-Framework.png)
-File urls.py mengarahkan permintaan HTTP dan diteruskan ke view yang tepat.\
-File views.py mengambil permintaan melalui template, berinteraksi dengan model jika diperlukan, dan merender template HTML.\
-File models.py mendefinisikan struktur data dan berinteraksi dengan database.\
-File HTML digunakan untuk merancang tampilan halaman web yang akan ditampilkan kepada user, dan mereka dapat menerima data dari views untuk menampilkan informasi yang diperlukan.\
+Penjelasan:
+- File urls.py mengarahkan permintaan HTTP dan diteruskan ke view yang tepat.\
+- File views.py mengambil permintaan melalui template, berinteraksi dengan model jika diperlukan, dan merender template HTML.\
+- File models.py mendefinisikan struktur data dan berinteraksi dengan database.\
+- File HTML digunakan untuk merancang tampilan halaman web yang akan ditampilkan kepada user, dan mereka dapat menerima data dari views untuk menampilkan informasi yang diperlukan.
 
 ## Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Kita menggunakan virtual environment karena:
