@@ -78,8 +78,8 @@ python manage.py runserver
 ## 4. Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
 - name sebagai nama item dengan tipe CharField.
 - amount sebagai jumlah item dengan tipe IntegerField.
-- description sebagai deskripsi item dengan tipe TextField.\
-\
+- description sebagai deskripsi item dengan tipe TextField.
+
 Untuk mendefinisikan model data dalam aplikasi Django, tambahkan kode pada "models.py" dalam direktori "main":
 ```
 from django.db import models
@@ -197,7 +197,7 @@ class PetkeeperInventoryTest(TestCase):
         self.assertEqual(makanan_kucing.description, "Makanan kucing premium")
         self.assertEqual(gembok_kandang.description, "Gembok anti-korosi")
 ```
-Penjelasan:\
+Penjelasan:
 - PetkeeperInventoryTest adalah kelas tes yang diturunkan dari TestCase yang disediakan oleh Django. Ini adalah kelas utama untuk menulis tes dalam Django.
 - setUp adalah metode yang dijalankan sebelum setiap tes. Di dalamnya, terdapat dua objek Product dengan data uji coba.
 - test_item_create adalah metode tes pertama. Di dalamnya, akan mengambil dua objek Product berdasarkan nama dan kemudian menggunakan pernyataan self.assertEqual untuk memeriksa apakah atribut amount dan category sesuai dengan yang diharapkan. 
