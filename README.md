@@ -72,16 +72,23 @@ python manage.py runserver
 - name sebagai nama item dengan tipe CharField.
 - amount sebagai jumlah item dengan tipe IntegerField.
 - description sebagai deskripsi item dengan tipe TextField.
-(models.py in directori main --
+models.py in directori main --
+```
 from django.db import models
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     amount = models.IntegerField()
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.CharField(max_length=255) )
+    category = models.CharField(max_length=255)
+```
+```
 python manage.py makemigrations
+```
+```
 python manage.py migrate
+```
 
 ## 5. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
 (views.py in direktori main --
