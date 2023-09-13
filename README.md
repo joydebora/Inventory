@@ -11,7 +11,7 @@ python -m venv env
 ``` 
 env\Scripts\activate.bat 
 ```
-make requirements.txt --\
+make requirements.txt --
 ```
 django
 gunicorn
@@ -20,13 +20,21 @@ psycopg2-binary
 requests
 urllib3
 ```
-pip install -r requirements.txt\
-django-admin startproject inventory .\
-(add ALLOWED_HOSTS = ["*"] in settings.py)\
-python manage.py runserver\
-(open http://localhost:8000, if there's rocket, then Django app successfully made)\
-(press ctrl+c in command prompt)\
-deactivate\
+```
+pip install -r requirements.txt
+```
+```
+django-admin startproject inventory .
+```
+add ALLOWED_HOSTS = ["*"] in settings.py
+```
+python manage.py runserver
+```
+open http://localhost:8000, if there's rocket, then Django app successfully made\
+press ctrl+c in command prompt
+```
+deactivate
+```
 
 ## 2. Membuat aplikasi dengan nama main pada proyek tersebut.
 env\Scripts\activate.bat
