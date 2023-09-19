@@ -546,6 +546,7 @@ JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi be
 
 ## Mengakses kelima URL di poin 2 menggunakan Postman.
 Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url untuk mengetes apakah data terkirimkan dengan baik.
+
 **URL: http://localhost:8000/**
 ![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
 
