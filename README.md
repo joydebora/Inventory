@@ -502,10 +502,10 @@ urlpatterns = [
 ## Apa perbedaan antara form POST dan form GET dalam Django?
 Form POST dan form GET adalah dua metode pengiriman data dalam Django yang memiliki perbedaan penting.
 
-#### Form POST: 
+#### Form POST
 Digunakan untuk mengirim data ke server dengan cara yang tidak terlihat oleh pengguna. Data yang dikirim dengan metode POST disertakan dalam body permintaan HTTP dan tidak terlihat di URL. Metode ini cocok untuk mengirim data sensitif seperti kata sandi atau informasi pribadi.
 
-#### Form GET:
+#### Form GET
 Digunakan untuk mengirim data ke server dengan cara yang terlihat oleh pengguna. Data yang dikirim dengan metode GET disertakan dalam URL sebagai parameter query. Metode ini cocok untuk mengirim data yang tidak sensitif, seperti permintaan pencarian atau filter.
 
 Perbedaan utama antara kedua metode ini adalah cara data dikirim dan terlihat oleh pengguna. Dalam form POST, data dikirim secara tersembunyi, sehingga lebih aman dan tidak dapat dilihat oleh pengguna. Namun, dalam form GET, data dikirim melalui URL, sehingga dapat terlihat oleh pengguna.
@@ -541,3 +541,6 @@ JSON didukung oleh hampir semua bahasa pemrograman dan framework, menjadikannya 
 JSON memungkinkan pertukaran data antara berbagai platform, seperti aplikasi web dengan server backend, dan antara aplikasi web dengan layanan pihak ketiga. Dalam arsitektur mikroservis dan aplikasi yang terdistribusi, JSON menjadi format standar untuk komunikasi antar layanan, sehingga mempermudah pengiriman dan penerimaan data di berbagai bagian sistem.
 5. **Kecepatan**: \
 JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi beban jaringan dan waktu respons dalam pertukaran data. Kemampuan JSON untuk dengan cepat diubah menjadi objek atau struktur data yang dapat digunakan oleh aplikasi membuatnya menjadi pilihan yang ideal untuk mengirim data dalam jumlah besar dan memprosesnya dengan efisien.
+
+## Mengakses kelima URL di poin 2 menggunakan Postman.
+![App](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
