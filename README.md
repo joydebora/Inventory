@@ -545,7 +545,7 @@ JSON memungkinkan pertukaran data antara berbagai platform, seperti aplikasi web
 JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi beban jaringan dan waktu respons dalam pertukaran data. Kemampuan JSON untuk dengan cepat diubah menjadi objek atau struktur data yang dapat digunakan oleh aplikasi membuatnya menjadi pilihan yang ideal untuk mengirim data dalam jumlah besar dan memprosesnya dengan efisien.
 
 ## Mengakses kelima URL di poin 2 menggunakan Postman.
-Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url untuk mengetes apakah data terkirimkan dengan baik.
+Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url berikut untuk mengetes apakah data terkirimkan dengan baik.
 
 **URL: http://localhost:8000/**
 ![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
