@@ -3,9 +3,10 @@
 **NPM: 2206082991**\
 **Kelas: PBP D**
 
-# CHECKLIST TUGAS
 #### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
 ![App1](https://i.postimg.cc/Gt5JBdcP/Whats-App-Image-2023-09-19-at-18-11-23.jpg)
+
+# CHECKLIST TUGAS
 ## 1. Membuat sebuah proyek Django baru.
 Membuat virtual environment dengan nama "env".
 ``` 
@@ -267,9 +268,10 @@ Perbedaan MVC, MVT, dan MVVM:
 **NPM: 2206082991**\
 **Kelas: PBP D**
 
-# CHECKLIST TUGAS
 #### Link Aplikasi: http://joy.debora-tutorial.pbp.cs.ui.ac.id/
 ![App2](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
+
+# CHECKLIST TUGAS
 ## 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
 Mengaktifkan virtual environment (lingkungan virtual) dalam proyek Django:
 ```
@@ -545,7 +547,7 @@ JSON memungkinkan pertukaran data antara berbagai platform, seperti aplikasi web
 JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi beban jaringan dan waktu respons dalam pertukaran data. Kemampuan JSON untuk dengan cepat diubah menjadi objek atau struktur data yang dapat digunakan oleh aplikasi membuatnya menjadi pilihan yang ideal untuk mengirim data dalam jumlah besar dan memprosesnya dengan efisien.
 
 ## Mengakses kelima URL di poin 2 menggunakan Postman.
-Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url berikut untuk mengetes apakah data terkirimkan dengan baik.
+Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url berikut untuk mengetes apakah data terkirimkan dengan baik:
 
 **URL: http://localhost:8000/**
 ![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
