@@ -5,7 +5,7 @@
 
 # CHECKLIST TUGAS
 #### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
-![App](https://i.postimg.cc/Gt5JBdcP/Whats-App-Image-2023-09-19-at-18-11-23.jpg)
+![App1](https://i.postimg.cc/Gt5JBdcP/Whats-App-Image-2023-09-19-at-18-11-23.jpg)
 ## 1. Membuat sebuah proyek Django baru.
 Membuat virtual environment dengan nama "env".
 ``` 
@@ -269,7 +269,7 @@ Perbedaan MVC, MVT, dan MVVM:
 
 # CHECKLIST TUGAS
 #### Link Aplikasi: http://joy.debora-tutorial.pbp.cs.ui.ac.id/
-![App](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
+![App2](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
 ## 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
 Mengaktifkan virtual environment (lingkungan virtual) dalam proyek Django:
 ```
@@ -549,3 +549,5 @@ JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi be
 ![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
 ![Xml](https://i.postimg.cc/02SJGpZ1/Whats-App-Image-2023-09-20-at-06-05-13.jpg)
 ![Json](https://i.postimg.cc/QtMTcwYf/Whats-App-Image-2023-09-20-at-06-05-19.jpg)
+![Xml/id](https://i.postimg.cc/Z5hwtPqJ/Whats-App-Image-2023-09-20-at-06-05-59.jpg)
+![Json/id](https://i.postimg.cc/Jzqcf9gQ/Whats-App-Image-2023-09-20-at-06-06-11.jpg)
