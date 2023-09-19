@@ -545,4 +545,7 @@ JSON memungkinkan pertukaran data antara berbagai platform, seperti aplikasi web
 JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi beban jaringan dan waktu respons dalam pertukaran data. Kemampuan JSON untuk dengan cepat diubah menjadi objek atau struktur data yang dapat digunakan oleh aplikasi membuatnya menjadi pilihan yang ideal untuk mengirim data dalam jumlah besar dan memprosesnya dengan efisien.
 
 ## Mengakses kelima URL di poin 2 menggunakan Postman.
-![App](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
+
+![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
+![Xml](https://i.postimg.cc/02SJGpZ1/Whats-App-Image-2023-09-20-at-06-05-13.jpg)
+![Json](https://i.postimg.cc/QtMTcwYf/Whats-App-Image-2023-09-20-at-06-05-19.jpg)
