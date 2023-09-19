@@ -269,21 +269,22 @@ Perbedaan MVC, MVT, dan MVVM:
 # CHECKLIST TUGAS
 #### Link Aplikasi: http://joy.debora-tutorial.pbp.cs.ui.ac.id/
 ## 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
-
+Mengaktifkan virtual environment (lingkungan virtual) dalam proyek Django:
 ```
 env\Scripts\activate.bat
 ```
-urls.py pada folder shopping_list:
+Konfigurasi URL patterns (pola URL) pada proyek Django Inventory:
 ```
 urlpatterns = [
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
 ]
 ```
+Menjalankan server untuk dapat melihat aplikasi web secara lokal di komputer. Buka pada url http://localhost:8000/ untuk melihat hasilnya.
 ```
 python manage.py runserver
 ```
-Buat berkas base.html pada folder templates di root folder:
+Membuat berkas template HTML "base.html" pada root folder. Berkas ini digunakan sebagai dasar halaman web dalam proyek Django.
 ```
 {% load static %}
 <!DOCTYPE html>
@@ -304,7 +305,7 @@ Buat berkas base.html pada folder templates di root folder:
     </body>
 </html>
 ```
-Tambahkan bagian TEMPLATES pada berkas settings.py di subdirektori Inventory:
+Melakukan konfigurasi template engine (untuk menghasilkan tambpilan HTML) dalam Django, dengan menambahkan bagian TEMPLATES pada berkas settings.py di subdirektori Inventory:
 ```
 TEMPLATES = [
     {
@@ -315,7 +316,7 @@ TEMPLATES = [
     }
 ]
 ```
-Ubah kode berkas main.html pada subdirektori templates di direktori main:
+Untuk merender tampilan halaman web dalam aplikasi, ubah kode berkas main.html pada subdirektori templates di direktori main:
 ```
 {% extends 'base.html' %}
 
@@ -327,7 +328,7 @@ Ubah kode berkas main.html pada subdirektori templates di direktori main:
     <h2>Class: <span style="color: lightpink">{{ class }}</span></h2>
 {% endblock content %}
 ```
-Buat berkas forms.py pada direktori main:
+Untuk mendefinisikan bentuk form yang akan digunakan dalam aplikasi, buat berkas forms.py pada direktori main:
 ```
 from django.forms import ModelForm
 from main.models import Product
@@ -337,14 +338,14 @@ class ProductForm(ModelForm):
         model = Product
         fields = "__all__"
 ```
-Tambahkan import pada berkas views.py di direktori main:
+Tambahkan import modul yang diperlukan pada berkas views.py di direktori main:
 ```
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
 from .models import Product
 ```
-Buat fungsi baru create_product:
+Buat fungsi baru create_product, untuk menangani pembuatan produk baru dalam aplikasi:
 ```
 def create_product(request):
     form = ProductForm(request.POST or None)
@@ -356,7 +357,7 @@ def create_product(request):
     context = {'form': form}
     return render(request, "create_product.html", context)
 ```
-Ubah fungsi show_main:
+Ubah fungsi show_main. Fungsi ini mengambil semua produk dari basis data menggunakan Product.objects.all(), yang nantinya akan digunakan oleh berkas template "main.html."
 ```
 def show_main(request):
     products = Product.objects.all()
@@ -371,15 +372,15 @@ def show_main(request):
 
     return render(request, "main.html", context)
 ```
-Tambahkan import pada berkas urls.py di direktori main:
+Tambahkan import modul yang diperlukan pada berkas urls.py di direktori main:
 ```
 from main.views import show_main, create_product
 ```
-Tambahkan path url kedalam urlpatterns:
+Menambahkan path URL untuk mengarahkan permintaan ke view 'create_product':
 ```
 path('create-product', create_product, name='create_product'),
 ```
-Buat berkas baru create_product.html pada folder templates di direktori main:
+Buat berkas baru 'create_product.html' pada folder templates di direktori main. 'create_product.html' merupakan berkas template yang meng-extend dari berkas "base.html":
 ```
 {% extends 'base.html' %} 
 
@@ -401,7 +402,7 @@ Buat berkas baru create_product.html pada folder templates di direktori main:
 
 {% endblock %}
 ```
-Tambahkan kode di dalam {% block content %} pada berkas main.html pada folder templates di direktoi main:
+Tambahkan kode di dalam {% block content %} pada berkas 'main.html' pada folder templates di direktoi main. Kode ini adalah berkas template yang akan digunakan untuk menampilkan daftar produk dalam inventory:
 ```
 ...
     <table>
@@ -435,7 +436,7 @@ Tambahkan kode di dalam {% block content %} pada berkas main.html pada folder te
     </a>
 {% endblock content %}
 ```
-Tambahkan kode di dalam class Product pada berkas models.py di direktoi main:
+Tambahkan kode di dalam class Product, untuk mendefinisikan model Product yang akan digunakan, pada berkas 'models.py' di direktoi main:
 class Product(models.Model):
 ```
    name = models.CharField(max_length=255)
@@ -444,24 +445,26 @@ class Product(models.Model):
     category = models.CharField(max_length=255)
     price = models.IntegerField()
 ```
-Jalankan perintah untuk membuat migrasi model.
+Jalankan perintah untuk menghasilkan file migrasi yang berisi instruksi untuk mengubah basis data sesuai dengan definisi model.
 ```
 python manage.py makemigrations
 ```
+Jalankan perintah untuk menerapkan perubahan ke dalam basis data sesuai dengan migrasi yang telah dibuat.
 ```
 python manage.py migrate
 ```
+Menjalankan server Django agar dapat mengakses aplikasi melalui browser.
 ```
 python manage.py runserver
 ```
 
 ## 2. Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
-Tambahkan import pada berkas views.py di direktoi main:
+Tambahkan import modul Django yang diperlukan untuk mengambil dan mengembalikan data dalam format XML atau JSON, pada berkas 'views.py' di direktoi main:
 ```
 from django.http import HttpResponse
 from django.core import serializers
 ```
-Tambahkan fungsi: 
+Tambahkan fungsi untuk mengambil semua data produk dari model Product dan mengembalikannya dalam format data yang ditentukan: 
 ```
 def show_xml(request):
     data = Product.objects.all()
@@ -481,11 +484,11 @@ def show_json_by_id(request, id):
 ```
 
 ## 3. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
-Tambahkan import pada berkas urls.py di direktori main: 
+Tambahkan import fungsi-fungsi view yang akan digunakan dalam URL patterns, pada berkas 'urls.py' di direktori main: 
 ```
 from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id 
 ```
-Tambahkan path url kedalam urlpatterns:
+Untuk melakukan konfigurasi URL patterns dalam aplikasi Django, tambahkan path url kedalam urlpatterns pada berkas 'urls.py' di direktori main:
 ```
 urlpatterns = [
 ...
@@ -521,7 +524,7 @@ Merupakan bahasa markup yang digunakan untuk menyimpan dan mengirim data secara 
 Merupakan format ringkas yang digunakan untuk pertukaran data antara aplikasi. JSON menggunakan struktur data berbasis teks dan lebih mudah dibaca oleh manusia. JSON memiliki sintaksis yang sederhana dan intuitif, dengan menggunakan objek dan array yang mirip dengan struktur data dalam bahasa pemrograman. JSON juga lebih ringan dan lebih efisien dalam hal ukuran file dan parsing dibandingkan dengan XML. Karena itulah, JSON menjadi pilihan yang populer dalam komunikasi antara aplikasi.
 
 #### HTML (Hypertext Markup Language)  
-Merupakan bahasa markup yang digunakan untuk membangun halaman web. HTML digunakan untuk mengatur tampilan dan struktur konten di web. Meskipun HTML mirip dengan XML dalam hal sintaksis, HTML memiliki aturan dan elemen yang telah ditentukan sebelumnya untuk membangun halaman web. HTML menggunakan tag-tag yang telah didefinisikan secara khusus, seperti `<html>`, `<head>`, `<body>,` dan lain-lain, untuk mengatur tampilan dan struktur halaman web. HTML juga mendukung penggunaan CSS (Cascading Style Sheets) untuk mengatur tampilan halaman web dengan lebih rinci.
+Merupakan bahasa markup yang digunakan untuk membangun halaman web. HTML digunakan untuk mengatur tampilan dan struktur konten di web. Meskipun HTML mirip dengan XML dalam hal sintaksis, HTML memiliki aturan dan elemen yang telah ditentukan sebelumnya untuk membangun halaman web. HTML menggunakan tag-tag yang telah didefinisikan secara khusus, seperti `<html>`, `<head>`, `<body>`, dan lain-lain, untuk mengatur tampilan dan struktur halaman web. HTML juga mendukung penggunaan CSS (Cascading Style Sheets) untuk mengatur tampilan halaman web dengan lebih rinci.
 
 Jadi, perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data adalah format, fleksibilitas, kompleksitas, dan tujuan penggunaannya. XML menyediakan fleksibilitas dalam mendefinisikan struktur data, sementara JSON lebih ringan dan lebih mudah dibaca oleh manusia. HTML, di sisi lain, digunakan khusus untuk membangun halaman web dengan aturan dan elemen yang telah ditentukan sebelumnya.
 
