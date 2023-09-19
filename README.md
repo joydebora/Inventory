@@ -171,7 +171,7 @@ git push -u origin main
 ```
 
 ## 9. Testing Dasar (Bonus)
-Untuk membuat unit tes untuk model Product dalam aplikasi yang telah dibuat, tambhakan kode pada "tests.py" dalam direktori "main":
+Untuk membuat unit tes untuk model Product dalam aplikasi yang telah dibuat, tambahkan kode pada "tests.py" dalam direktori "main":
 ```
 from django.test import TestCase
 from .models import Product
@@ -260,3 +260,244 @@ Perbedaan MVC, MVT, dan MVVM:
 - Dalam MVC, Controller berperan sebagai perantara yang menghubungkan Model dan View. Model dan View tidak berinteraksi langsung satu sama lain.
 - Dalam MVT (khususnya dalam Django), View dan Template berperan lebih terintegrasi dalam mengelola tampilan dan logika aplikasi.
 - Dalam MVVM, ViewModel mengambil peran yang lebih kuat dalam mengelola interaksi antara View dan Model. ViewModel memungkinkan untuk mengikat data langsung ke tampilan tanpa melibatkan logika aplikasi di dalam View.
+
+# TUGAS 3
+**Nama: Joy Debora Sitorus**\
+**NPM: 2206082991**\
+**Kelas: PBP D**
+
+# CHECKLIST TUGAS
+#### Link Aplikasi: http://joy.debora-tutorial.pbp.cs.ui.ac.id/
+## 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
+
+```
+env\Scripts\activate.bat
+```
+urls.py pada folder shopping_list:
+```
+urlpatterns = [
+    path('', include('main.urls')),
+    path('admin/', admin.site.urls),
+]
+```
+```
+python manage.py runserver
+```
+Buat berkas base.html pada folder templates di root folder:
+```
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        {% block meta %}
+        {% endblock meta %}
+    </head>
+
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>
+```
+Tambahkan bagian TEMPLATES pada berkas settings.py di subdirektori Inventory:
+```
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'], # Tambahkan kode ini
+        'APP_DIRS': True,
+        ...
+    }
+]
+```
+Ubah kode berkas main.html pada subdirektori templates di direktori main:
+```
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1><span style="color: blueviolet">{{ inventory }}</span></h1>
+
+    <h2>Name: <span style="color: lightcoral">{{ name }}</span></h2>
+    <h2>NPM: <span style="color: lightsalmon">{{ npm }}</span></h2>
+    <h2>Class: <span style="color: lightpink">{{ class }}</span></h2>
+{% endblock content %}
+```
+Buat berkas forms.py pada direktori main:
+```
+from django.forms import ModelForm
+from main.models import Product
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = "__all__"
+```
+Tambahkan import pada berkas views.py di direktori main:
+```
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
+from .models import Product
+```
+Buat fungsi baru create_product:
+```
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+```
+Ubah fungsi show_main:
+```
+def show_main(request):
+    products = Product.objects.all()
+    
+    context = {
+        "inventory": "Petkeeper Inventory",
+        "name": "Joy Debora Sitorus",
+        "npm": "2206082991",
+        "class": "PBP D",
+        'products': products
+    }
+
+    return render(request, "main.html", context)
+```
+Tambahkan import pada berkas urls.py di direktori main:
+```
+from main.views import show_main, create_product
+```
+Tambahkan path url kedalam urlpatterns:
+```
+path('create-product', create_product, name='create_product'),
+```
+Buat berkas baru create_product.html pada folder templates di direktori main:
+```
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>Add New Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Add Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+```
+Tambahkan kode di dalam {% block content %} pada berkas main.html pada folder templates di direktoi main:
+```
+...
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+    
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    
+        {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.amount}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <br />
+    
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
+{% endblock content %}
+```
+Tambahkan kode di dalam class Product pada berkas models.py di direktoi main:
+class Product(models.Model):
+```
+   name = models.CharField(max_length=255)
+    amount = models.IntegerField()
+    description = models.TextField()
+    category = models.CharField(max_length=255)
+    price = models.IntegerField()
+```
+Jalankan perintah untuk membuat migrasi model.
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
+```
+python manage.py runserver
+```
+
+## 2. Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+Tambahkan import pada berkas views.py di direktoi main:
+```
+from django.http import HttpResponse
+from django.core import serializers
+```
+Tambahkan fungsi: 
+```
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+```
+
+## 3. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+Tambahkan import pada berkas urls.py di direktori main: 
+```
+from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id 
+```
+Tambahkan path url kedalam urlpatterns:
+```
+urlpatterns = [
+...
+    path('xml/', show_xml, name='show_xml'), 
+    path('json/', show_json, name='show_json'),
+    path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('json/<int:id>/', show_json_by_id, name='show_json_by_id'), 
+]
+```
+
+## Apa perbedaan antara form POST dan form GET dalam Django?
+
+## Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
+## Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
