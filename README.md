@@ -5,6 +5,7 @@
 
 # CHECKLIST TUGAS
 #### Link Aplikasi: https://joy-petkeeper-inventory.adaptable.app/main/
+![App](https://i.postimg.cc/Gt5JBdcP/Whats-App-Image-2023-09-19-at-18-11-23.jpg)
 ## 1. Membuat sebuah proyek Django baru.
 Membuat virtual environment dengan nama "env".
 ``` 
@@ -268,6 +269,7 @@ Perbedaan MVC, MVT, dan MVVM:
 
 # CHECKLIST TUGAS
 #### Link Aplikasi: http://joy.debora-tutorial.pbp.cs.ui.ac.id/
+![App](https://i.postimg.cc/ydTL8Mgn/Whats-App-Image-2023-09-20-at-06-02-55.jpg)
 ## 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
 Mengaktifkan virtual environment (lingkungan virtual) dalam proyek Django:
 ```
