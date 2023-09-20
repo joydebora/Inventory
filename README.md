@@ -546,16 +546,23 @@ JSON memiliki parsing dan serialisasi yang efisien, sehingga dapat mengurangi be
 Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka Postman dan buat request baru dengan method GET dan url berikut untuk mengetes apakah data terkirimkan dengan baik:
 
 **URL: http://localhost:8000/**
-![Html](https://i.postimg.cc/nrCqfgvX/Whats-App-Image-2023-09-20-at-06-04-40.jpg)
+![Html1](https://i.postimg.cc/ZK3vMcLH/Whats-App-Image-2023-09-20-at-09-35-57.jpg)
+![Html2](https://i.postimg.cc/G2HHJJ2k/Whats-App-Image-2023-09-20-at-09-35-57-1.jpg)
+![Html3](https://i.postimg.cc/wTWZnXTt/Whats-App-Image-2023-09-20-at-09-35-57-2.jpg)
+![Html4](https://i.postimg.cc/TwqH0m43/Whats-App-Image-2023-09-20-at-09-35-57-3.jpg)
+![Html5](https://i.postimg.cc/G3K5sFDM/Whats-App-Image-2023-09-20-at-09-35-57-4.jpg)
 
 **URL: http://localhost:8000/xml**
-![Xml](https://i.postimg.cc/02SJGpZ1/Whats-App-Image-2023-09-20-at-06-05-13.jpg)
+![Xml1](https://i.postimg.cc/R0wPCK9L/Whats-App-Image-2023-09-20-at-09-36-27.jpg)
+![Xml2](https://i.postimg.cc/pLFCkz9M/Whats-App-Image-2023-09-20-at-09-36-27-1.jpg)
 
 **URL: http://localhost:8000/json**
-![Json](https://i.postimg.cc/QtMTcwYf/Whats-App-Image-2023-09-20-at-06-05-19.jpg)
+![Json1](https://i.postimg.cc/G2qx9jfG/Whats-App-Image-2023-09-20-at-09-37-39.jpg)
+![Json2](https://i.postimg.cc/wx4kp0Ld/Whats-App-Image-2023-09-20-at-09-37-39-1.jpg)
+![Json3](https://i.postimg.cc/8CGRH3QL/Whats-App-Image-2023-09-20-at-09-37-39-2.jpg)
 
 **URL: http://localhost:8000/xml/1/**
-![Xml/id](https://i.postimg.cc/Z5hwtPqJ/Whats-App-Image-2023-09-20-at-06-05-59.jpg)
+![Xml/id](https://i.postimg.cc/j5dzV7j5/Whats-App-Image-2023-09-20-at-09-37-50.jpg)
 
 **URL: http://localhost:8000/json/1/**
-![Json/id](https://i.postimg.cc/Jzqcf9gQ/Whats-App-Image-2023-09-20-at-06-06-11.jpg)
+![Json/id](https://i.postimg.cc/vTC962tg/Whats-App-Image-2023-09-20-at-09-38-02.jpg)
