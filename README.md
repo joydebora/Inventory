@@ -505,16 +505,14 @@ urlpatterns = [
 Form POST dan form GET adalah dua metode pengiriman data dalam Django yang memiliki perbedaan penting.
 
 #### Form POST
-Digunakan untuk mengirim data ke server dengan cara yang tidak terlihat oleh pengguna. Data yang dikirim dengan metode POST disertakan dalam body permintaan HTTP dan tidak terlihat di URL. Metode ini cocok untuk mengirim data sensitif seperti kata sandi atau informasi pribadi.
+1. Post digunakan untuk mengirim data (file, data formulir, dll.) ke server. Jika pembuatan berhasil, Post mengembalikan kode status HTTP 201 (Created).
+2. Digunakan untuk mengirim data ke server dengan cara yang tidak terlihat oleh pengguna. Data yang dikirim dengan metode POST disertakan dalam body permintaan HTTP dan tidak terlihat di URL. Metode ini cocok untuk mengirim data sensitif seperti kata sandi atau informasi pribadi.
 
 #### Form GET
-Digunakan untuk mengirim data ke server dengan cara yang terlihat oleh pengguna. Data yang dikirim dengan metode GET disertakan dalam URL sebagai parameter query. Metode ini cocok untuk mengirim data yang tidak sensitif, seperti permintaan pencarian atau filter.
+1. Get digunakan untuk membaca/mengambil data dari server web. Get akan mengembalikan kode status HTTP 200 (OK) jika data berhasil diambil dari server.
+2. Get digunakan untuk mengirim data ke server dengan cara yang terlihat oleh pengguna. Data yang dikirim dengan metode GET disertakan dalam URL sebagai parameter query. Metode ini cocok untuk mengirim data yang tidak sensitif, seperti permintaan pencarian atau filter.
 
-Perbedaan utama antara kedua metode ini adalah cara data dikirim dan terlihat oleh pengguna. Dalam form POST, data dikirim secara tersembunyi, sehingga lebih aman dan tidak dapat dilihat oleh pengguna. Namun, dalam form GET, data dikirim melalui URL, sehingga dapat terlihat oleh pengguna.
-
-Dalam penggunaan praktis, form POST lebih sering digunakan ketika mengirim data sensitif seperti kata sandi, informasi kartu kredit, atau informasi pribadi lainnya. Form GET lebih umum digunakan untuk permintaan pencarian, filter, atau tautan yang dapat dibagikan.
-
-Dalam Django, kita dapat menggunakan kedua metode ini untuk mengelola data yang dikirim melalui formulir, tergantung pada kebutuhan aplikasi.
+Perbedaan utama antara kedua metode ini adalah dalam implementasi penggunaannya, form POST lebih sering digunakan ketika mengirim data sensitif seperti kata sandi, informasi kartu kredit, atau informasi pribadi lainnya. Form GET lebih umum digunakan untuk permintaan pencarian, filter, atau tautan yang dapat dibagikan.
 
 ## Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
 XML, JSON, dan HTML adalah format yang digunakan untuk pengiriman data antara aplikasi atau dalam konteks membangun halaman web. Ketiga format ini memiliki tujuan yang berbeda, yaitu menyimpan dan mengirim data secara hierarkis (XML), pertukaran data antara aplikasi (JSON), dan membangun halaman web (HTML).
