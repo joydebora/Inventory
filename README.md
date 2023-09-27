@@ -878,14 +878,15 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 3. Desain Tampilan Default: Tampilan yang dihasilkan oleh UserCreationForm mungkin perlu disesuaikan dengan desain tampilan spesifik proyek Anda.
 
 ## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
-**Perbedaan antara autentikasi dan otorisasi dalam konteks Django:**\
+**Perbedaan antara autentikasi dan otorisasi dalam konteks Django:**
+
 **Autentikasi:** proses verifikasi identitas user, yaitu memastikan bahwa pengguna yang mencoba mengakses aplikasi adalah user yang mereka klaim.\
 Dalam Django, autentikasi biasanya diimplementasikan dengan menggunakan modul django.contrib.auth, yang mencakup sistem otentikasi bawaan untuk manajemen pengguna dan otentikasi. Ini melibatkan verifikasi kredensial pengguna, seperti username dan password, token, atau metode otentikasi lainnya.
 
 **Otorisasi:** proses pengendalian akses ke sumber daya atau fungsi dalam aplikasi berdasarkan hak akses yang dimiliki oleh pengguna setelah mereka terotentikasi.\
 Dalam Django, otorisasi dapat diimplementasikan dengan menggunakan dekorator seperti @login_required untuk memastikan bahwa hanya pengguna yang terotentikasi yang dapat mengakses views tertentu. Ini menentukan apa yang diizinkan atau tidak diizinkan pengguna untuk lakukan setelah mereka masuk.
 
-**Keduanya penting karena:**\
+**Keduanya penting karena:**
 - Autentikasi memastikan bahwa hanya pengguna yang sah yang dapat mengakses aplikasi. Tanpa autentikasi yang kuat, aplikasi dapat terbuka untuk penyalahgunaan.\
 - Otorisasi memastikan bahwa pengguna hanya dapat melakukan tindakan yang sesuai dengan peran atau izin yang mereka miliki. Ini melindungi data dan fungsionalitas penting dalam aplikasi Anda dan memastikan bahwa pengguna tidak dapat mengakses atau mengubah data yang tidak seharusnya.
 
