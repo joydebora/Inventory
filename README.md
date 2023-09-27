@@ -566,3 +566,306 @@ Setelah format XML, JSON, XML by ID, dan JSON by ID berhasil ditambahkan, buka P
 
 **URL: http://localhost:8000/json/1/**
 ![Json/id](https://i.postimg.cc/vTC962tg/Whats-App-Image-2023-09-20-at-09-38-02.jpg)
+
+# TUGAS 4
+**Nama: Joy Debora Sitorus**\
+**NPM: 2206082991**\
+**Kelas: PBP D**
+
+# CHECKLIST TUGAS
+![App3](https://i.postimg.cc/jdSMNrp2/Whats-App-Image-2023-09-27-at-06-34-15.jpg)
+## 1. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+#### Fungsi Registrasi
+Mengaktifkan virtual environment (lingkungan virtual) dalam proyek Django:
+```
+env\Scripts\activate.bat
+```
+Tambahkan import modul yang diperlukan pada berkas urls.py di direktori main:
+```
+from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages  
+```
+Menambahkan fungsi register untuk  mengelola proses pendaftaran pengguna, yang mencakup validasi formulir pendaftaran, penyimpanan data pengguna, pesan sukses, dan pengalihan ke halaman login jika pendaftaran berhasil.
+```
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+```
+Membuat berkas 'register.html' pada folder templates di subdirektori main, sebagai tampilan halaman registrasi dalam proyek Django, yang didasarkan pada berkas 'base.html' untuk komponen-komponen tampilan dasar, dan menampilkan formulir pendaftaran, pesan, dan elemen-elemen lainnya.
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
+```
+Pada urls.py di subdirektori main, mengimpor fungsi register dari modul main.views agar bisa digunakan dalam konfigurasi URL proyek Django.
+```
+from main.views import register
+```
+
+Menambahkan path URL dengan pola 'register/' ke dalam urlpatterns, sehingga user dapat mengakses halaman registrasi melalui URL.
+```
+...
+path('register/', register, name='register'),
+...
+```
+
+#### Fungsi Login
+Pada berkas 'views.py' di subdirektori main, mengimpor modul yang digunakan untuk mengelola otentikasi pengguna dalam aplikasi.
+```
+from django.contrib.auth import authenticate, login
+```
+
+Membuat fungsi login_user yang mengelola proses otentikasi pengguna berdasarkan data yang diterima dari formulir login. Jika otentikasi berhasil, pengguna akan diarahkan ke halaman utama, sedangkan jika gagal, pesan kesalahan akan ditampilkan.
+```
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main:show_main')
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+```
+Membuat berkas baru 'login.html' pada folder templates di subdirektori main, yang digunakan sebagai tampilan halaman login, yang didasarkan pada berkas 'base.html' untuk komponen-komponen tampilan dasar, dan menampilkan formulir login, pesan, dan tautan untuk pendaftaran akun jika belum memiliki akun.
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+
+    <h1>Login</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+
+</div>
+
+{% endblock content %}
+```
+Mengimpor fungsi login_user dari modul main.views pada berkas 'urls.py' di subdirektori main:
+```
+from main.views import login_user
+```
+
+Menambahkan path URL kedalam url_patterns dengan pola 'login/', yang akan menghubungkan URL '/login/' dengan fungsi login yang telah diimpor sebelumnya.
+```
+...
+path('login/', login_user, name='login'), #sesuaikan dengan nama fungsi yang dibuat
+...
+```
+
+#### Fungsi Logout
+Pada berkas 'views.py' di subdirektori main, mengimpor modul yang digunakan untuk mengelola proses keluar pengguna dari sesi aplikasi.
+```
+from django.contrib.auth import logout
+```
+Membuat fungsi logout_user yang menghentikan sesi pengguna (logout) dalam aplikasi dan mengarahkannya kembali ke halaman login setelah logout berhasil.
+```
+def logout_user(request):
+    logout(request)
+    return redirect('main:login')
+```
+Pada berkas 'main.html' pada folder templates, subdirektori main, membuat sebuah button (link) yang ketika diklik akan mengarahkan pengguna ke halaman logout dalam proyek Django.
+```
+...
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+...
+```
+-- tambahkan import pada urls.py di subdirektori main:
+```
+Mengimpor fungsi logout_user dari modul main.views pada berkas 'urls.py' di subdirektori main:
+```
+Menambahkan path URL kedalam url_patterns dengan pola 'logout/', yang akan menghubungkan URL '/logout/' dengan fungsi logout yang telah diimpor sebelumnya.
+```
+...
+path('logout/', logout_user, name='logout'),
+...
+```
+
+
+#### Meresktriksi Akses
+Pada berkas 'views.py' pada subdirektori main, menambahkan decorator login_required untuk memastikan bahwa hanya pengguna yang sudah login dapat mengakses fungsi show_main, dan jika pengguna belum login, mereka akan diarahkan ke halaman login dengan URL '/login'
+```
+from django.contrib.auth.decorators import login_required
+...
+@login_required(login_url='/login')
+def show_main(request):
+...
+```
+Mengaktifkan server Django untuk nantinya menjalankan aplikasi dan dapat diakses melalui browser web.
+```
+python manage.py runserver
+```
+Menjalankan server untuk dapat melihat aplikasi web secara lokal di komputer. Buka pada url http://localhost:8000/ untuk melihat hasilnya.
+
+Tampilan aplikasi:
+![App3](https://i.postimg.cc/jdSMNrp2/Whats-App-Image-2023-09-27-at-06-34-15.jpg)
+![App4](https://i.postimg.cc/xdg4Bybj/Whats-App-Image-2023-09-27-at-06-26-22.jpg)
+
+
+## 2. Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+
+
+## 3. Menghubungkan model Item dengan User.
+Pada berkas 'models.py' di subdirektori main, mendefinisikan model Product dalam aplikasi dengan relasi ForeignKey ke model user, sehingga setiap produk akan terkait dengan pengguna tertentu yang memilikinya.
+```
+from django.contrib.auth.models import User
+
+class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ...
+```
+Mengubah fungsi create_product pada views.py di subdirektori main, untuk menghandle pembuatan produk dengan menghubungkan produk yang dibuat dengan user yang saat ini login dan mengarahkannya kembali ke halaman utama setelah produk berhasil dibuat.
+```
+def create_product(request):
+ form = ProductForm(request.POST or None)
+
+ if form.is_valid() and request.method == "POST":
+     product = form.save(commit=False)
+     product.user = request.user
+     product.save()
+     return HttpResponseRedirect(reverse('main:show_main'))
+ ...
+```
+Mengbah fungsi show_main pada views.py di subdirektori main, untuk mengambil produk-produk yang terkait dengan pengguna yang saat ini login dan mengatur konteks untuk halaman utama dengan daftar produk tersebut.
+```
+def show_main(request):
+    products = Product.objects.filter(user=request.user)
+
+    context = {
+        'inventory': 'Petkeeper Inventory',
+    ...
+    }
+...
+```
+
+## 4. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+Pada berkas 'views.py' pada subdirektori main, mengimpor modul untuk menghandle request seperti redirection dan penggunaan tanggal dan waktu dalam aplikasi Django.
+```
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+```
+Mengubah fungsi login_user, untuk mengatur cookie 'last_login' dengan waktu masuk terakhir pengguna dan mengarahkan pengguna ke halaman utama setelah berhasil login.
+```
+...
+if user is not None:
+    login(request, user)
+    response = HttpResponseRedirect(reverse("main:show_main")) 
+    response.set_cookie('last_login', str(datetime.datetime.now()))
+    return response
+...
+```
+Pada fungsi show_main, menambahkan waktu terakhir login pengguna, yang akan digunakan untuk ditampilkan dalam halaman utama.
+```
+context = {
+        'inventory': 'Petkeeper Inventory',
+        'name': 'Joy Debora Sitorus',
+        'npm': '2206082991',
+        'class': 'PBP D',
+        'products': products,
+        'last_login': request.COOKIES['last_login'],
+    }
+```
+Mengubah fungsi logout_user untuk menghapus cookie 'last_login', yang mengatur waktu masuk terakhir pengguna, dan mengarahkan pengguna kembali ke halaman login setelah berhasil logout.
+```
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+```
+Pada berkas 'main.html' di folder templates, subdirektori main, menampilkan informasi tentang waktu masuk terakhir pengguna dalam halaman utama, yang diambil dari variabel konteks 'last_login'.
+```
+...
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+...
+```
+
+## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
