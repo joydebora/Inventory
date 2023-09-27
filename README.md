@@ -784,7 +784,11 @@ Tampilan aplikasi:
 
 
 ## 2. Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+Username: catlovers
+![cat](https://i.postimg.cc/g0Lb7mRC/Whats-App-Image-2023-09-27-at-10-41-43.jpg)
 
+Username: doglovers
+![dog](https://i.postimg.cc/CL9NN0hB/Whats-App-Image-2023-09-27-at-10-46-27.jpg)
 
 ## 3. Menghubungkan model Item dengan User.
 Pada berkas 'models.py' di subdirektori main, mendefinisikan model Product dalam aplikasi dengan relasi ForeignKey ke model user, sehingga setiap produk akan terkait dengan pengguna tertentu yang memilikinya.
