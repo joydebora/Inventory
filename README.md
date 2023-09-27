@@ -878,8 +878,6 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 3. Desain Tampilan Default: Tampilan yang dihasilkan oleh UserCreationForm mungkin perlu disesuaikan dengan desain tampilan spesifik proyek Anda.
 
 ## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
-**Perbedaan antara autentikasi dan otorisasi dalam konteks Django:**
-
 **Autentikasi:** proses verifikasi identitas user, yaitu memastikan bahwa pengguna yang mencoba mengakses aplikasi adalah user yang mereka klaim.\
 -> Dalam Django, autentikasi biasanya diimplementasikan dengan menggunakan modul django.contrib.auth, yang mencakup sistem otentikasi bawaan untuk manajemen pengguna dan otentikasi. Ini melibatkan verifikasi kredensial pengguna, seperti username dan password, token, atau metode otentikasi lainnya.
 
@@ -887,9 +885,22 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 -> Dalam Django, otorisasi dapat diimplementasikan dengan menggunakan dekorator seperti @login_required untuk memastikan bahwa hanya pengguna yang terotentikasi yang dapat mengakses views tertentu. Ini menentukan apa yang diizinkan atau tidak diizinkan pengguna untuk lakukan setelah mereka masuk.
 
 **Keduanya penting karena:**
-- Autentikasi memastikan bahwa hanya pengguna yang sah yang dapat mengakses aplikasi. Tanpa autentikasi yang kuat, aplikasi dapat terbuka untuk penyalahgunaan.\
+- Autentikasi memastikan bahwa hanya pengguna yang sah yang dapat mengakses aplikasi. Tanpa autentikasi yang kuat, aplikasi dapat terbuka untuk penyalahgunaan.
 - Otorisasi memastikan bahwa pengguna hanya dapat melakukan tindakan yang sesuai dengan peran atau izin yang mereka miliki. Ini melindungi data dan fungsionalitas penting dalam aplikasi Anda dan memastikan bahwa pengguna tidak dapat mengakses atau mengubah data yang tidak seharusnya.
 
 ## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+**Cookies adalah:**\
+Potongan data yang disimpan di komputer atau perangkat pengguna saat mereka berinteraksi dengan situs web atau aplikasi web. Cookies digunakan oleh aplikasi web untuk menyimpan informasi tertentu dan mengidentifikasi pengguna saat mereka kembali ke situs atau aplikasi yang sama.
+
+**Dalam konteks Django,** cookies digunakan untuk mengelola data sesi pengguna. Data sesi adalah cara untuk menyimpan informasi spesifik pengguna selama mereka berinteraksi dengan aplikasi web, bahkan jika mereka belum terdaftar atau terotentikasi. Django menggunakan cookies untuk mengidentifikasi pengguna dan menyimpan data sesi seperti:
+- Identifikasi Otentikasi: Untuk mengidentifikasi pengguna yang sudah login.
+- Data Sesi: Untuk menyimpan data yang perlu diingat antar permintaan, misalnya, keranjang belanja sementara, preferensi tampilan, atau status login.
+
+Secara bawaan, Django menggunakan session cookies, yang dapat dikonfigurasi dalam berkas konfigurasi settings.py. Beberapa fitur terkait sesi dan cookies dalam Django meliputi:
+- SESSION_ENGINE: Pengaturan ini memungkinkan Anda untuk memilih penyimpanan sesi, seperti dalam database atau file.
+- SESSION_COOKIE_SECURE: Mengatur apakah cookie sesi hanya boleh disampaikan melalui HTTPS.
+- SESSION_COOKIE_HTTPONLY: Mengatur apakah cookie sesi hanya dapat diakses melalui JavaScript.
+- SESSION_EXPIRE_AT_BROWSER_CLOSE: Mengatur apakah sesi akan berakhir ketika pengguna menutup browser.
+- SESSION_COOKIE_NAME: Nama cookie sesi yang dapat disesuaikan.
 
 ## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
