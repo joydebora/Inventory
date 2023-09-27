@@ -873,7 +873,7 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 4. Dokumentasi yang Baik: Karena merupakan bagian dari Django, formulir ini didokumentasikan dengan baik dalam dokumentasi resmi Django.
 
 **Kekurangan UserCreationForm:**
-1. Kustomisasi Terbatas: Meskipun UserCreationForm memudahkan pembuatan pengguna dengan cepat, jika Anda memerlukan formulir pendaftaran yang sangat disesuaikan atau memiliki persyaratan khusus, Anda mungkin perlu menambahkan validasi dan bidang tambahan secara manual.
+1. Kustomisasi Terbatas: Meskipun UserCreationForm memudahkan pembuatan pengguna dengan cepat, jika memerlukan formulir pendaftaran yang sangat disesuaikan atau memiliki persyaratan khusus, kita mungkin perlu menambahkan validasi dan bidang tambahan secara manual.
 2. Tidak Cocok untuk Semua Kasus: Form ini mungkin tidak cocok untuk semua aplikasi karena setiap aplikasi memiliki persyaratan pendaftaran yang berbeda. Penggunaan formulir ini secara default mungkin tidak mencakup semua kebutuhan Anda.
 3. Desain Tampilan Default: Tampilan yang dihasilkan oleh UserCreationForm mungkin perlu disesuaikan dengan desain tampilan spesifik proyek Anda.
 
@@ -886,21 +886,27 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 
 **Keduanya penting karena:**
 - Autentikasi memastikan bahwa hanya pengguna yang sah yang dapat mengakses aplikasi. Tanpa autentikasi yang kuat, aplikasi dapat terbuka untuk penyalahgunaan.
-- Otorisasi memastikan bahwa pengguna hanya dapat melakukan tindakan yang sesuai dengan peran atau izin yang mereka miliki. Ini melindungi data dan fungsionalitas penting dalam aplikasi Anda dan memastikan bahwa pengguna tidak dapat mengakses atau mengubah data yang tidak seharusnya.
+- Otorisasi memastikan bahwa pengguna hanya dapat melakukan tindakan yang sesuai dengan peran atau izin yang mereka miliki. Ini melindungi data dan fungsionalitas penting dalam aplikasi dan memastikan bahwa pengguna tidak dapat mengakses atau mengubah data yang tidak seharusnya.
 
 ## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
-**Cookies adalah:**\
+**Cookies dalam konteks aplikasi web adalah:**\
 Potongan data yang disimpan di komputer atau perangkat pengguna saat mereka berinteraksi dengan situs web atau aplikasi web. Cookies digunakan oleh aplikasi web untuk menyimpan informasi tertentu dan mengidentifikasi pengguna saat mereka kembali ke situs atau aplikasi yang sama.
 
-**Dalam konteks Django,** cookies digunakan untuk mengelola data sesi pengguna. Data sesi adalah cara untuk menyimpan informasi spesifik pengguna selama mereka berinteraksi dengan aplikasi web, bahkan jika mereka belum terdaftar atau terotentikasi. Django menggunakan cookies untuk mengidentifikasi pengguna dan menyimpan data sesi seperti:
+Dalam konteks Django, cookies digunakan untuk mengelola data sesi pengguna. Data sesi adalah cara untuk menyimpan informasi spesifik pengguna selama mereka berinteraksi dengan aplikasi web, bahkan jika mereka belum terdaftar atau terotentikasi. Django menggunakan cookies untuk mengidentifikasi pengguna dan menyimpan data sesi seperti:
 - Identifikasi Otentikasi: Untuk mengidentifikasi pengguna yang sudah login.
 - Data Sesi: Untuk menyimpan data yang perlu diingat antar permintaan, misalnya, keranjang belanja sementara, preferensi tampilan, atau status login.
 
 Secara bawaan, Django menggunakan session cookies, yang dapat dikonfigurasi dalam berkas konfigurasi settings.py. Beberapa fitur terkait sesi dan cookies dalam Django meliputi:
-- SESSION_ENGINE: Pengaturan ini memungkinkan Anda untuk memilih penyimpanan sesi, seperti dalam database atau file.
+- SESSION_ENGINE: Pengaturan ini memungkinkan untuk memilih penyimpanan sesi, seperti dalam database atau file.
 - SESSION_COOKIE_SECURE: Mengatur apakah cookie sesi hanya boleh disampaikan melalui HTTPS.
 - SESSION_COOKIE_HTTPONLY: Mengatur apakah cookie sesi hanya dapat diakses melalui JavaScript.
 - SESSION_EXPIRE_AT_BROWSER_CLOSE: Mengatur apakah sesi akan berakhir ketika pengguna menutup browser.
 - SESSION_COOKIE_NAME: Nama cookie sesi yang dapat disesuaikan.
 
 ## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Penggunaan cookies dalam pengembangan web dapat aman secara default jika diimplementasikan dengan baik dan jika praktik keamanan yang disarankan diikuti.
+
+Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
+- Keamanan Data: Cookies dapat digunakan untuk menyimpan data sensitif seperti token otentikasi atau ID sesi. Jika cookie ini diretas atau dicuri, maka penggunaan cookies dapat membahayakan keamanan data.
+- Cross-Site Request Forgery (CSRF): Serangan CSRF dapat menggunakan cookies untuk mengirim permintaan yang tidak sah atas nama pengguna yang sudah masuk. Untuk melindungi terhadap serangan ini, kita harus memastikan cookie yang digunakan untuk otentikasi diimplementasikan dengan benar.
+- Penggunaan Berlebihan: Terlalu banyak cookies dapat memperlambat performa situs web karena setiap permintaan HTTP akan membawa semua cookies yang diperlukan. Ini dapat mengganggu pengalaman pengguna, terutama pada perangkat dengan koneksi internet yang lambat.
