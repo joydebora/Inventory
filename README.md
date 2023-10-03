@@ -931,7 +931,7 @@ Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Element Selector:
 Selector elemen memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
-Waktu yang Tepat: Gunakan elemen selector ketika kita ingin menerapkan gaya umum ke seluruh elemen dengan jenis yang sama, misalnya, mengatur gaya dasar untuk semua tag <p> atau <h1>.
+Waktu yang Tepat: Gunakan elemen selector ketika kita ingin menerapkan gaya umum ke seluruh elemen dengan jenis yang sama, misalnya, mengatur gaya dasar untuk semua tag '<p>' atau '<h1>'.
 
 ## Jelaskan HTML5 Tag yang kamu ketahui.
 HTML5 adalah versi terbaru dari bahasa markup HTML (HyperText Markup Language) yang digunakan untuk membuat dan merancang konten web. Berikut adalah beberapa tag HTML5 yang penting dan umum digunakan:
