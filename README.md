@@ -878,8 +878,8 @@ UserCreationForm adalah salah satu formulir bawaan (built-in form) yang disediak
 
 **Kekurangan UserCreationForm:**
 1. Kustomisasi Terbatas: Meskipun UserCreationForm memudahkan pembuatan pengguna dengan cepat, jika memerlukan formulir pendaftaran yang sangat disesuaikan atau memiliki persyaratan khusus, kita mungkin perlu menambahkan validasi dan bidang tambahan secara manual.
-2. Tidak Cocok untuk Semua Kasus: Form ini mungkin tidak cocok untuk semua aplikasi karena setiap aplikasi memiliki persyaratan pendaftaran yang berbeda. Penggunaan formulir ini secara default mungkin tidak mencakup semua kebutuhan Anda.
-3. Desain Tampilan Default: Tampilan yang dihasilkan oleh UserCreationForm mungkin perlu disesuaikan dengan desain tampilan spesifik proyek Anda.
+2. Tidak Cocok untuk Semua Kasus: Form ini mungkin tidak cocok untuk semua aplikasi karena setiap aplikasi memiliki persyaratan pendaftaran yang berbeda. Penggunaan formulir ini secara default mungkin tidak mencakup semua kebutuhan aplikasi.
+3. Desain Tampilan Default: Tampilan yang dihasilkan oleh UserCreationForm mungkin perlu disesuaikan dengan desain tampilan spesifik proyek.
 
 ## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
 **Autentikasi:** proses verifikasi identitas user, yaitu memastikan bahwa pengguna yang mencoba mengakses aplikasi adalah user yang mereka klaim.\
@@ -914,3 +914,79 @@ Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
 - Keamanan Data: Cookies dapat digunakan untuk menyimpan data sensitif seperti token otentikasi atau ID sesi. Jika cookie ini diretas atau dicuri, maka penggunaan cookies dapat membahayakan keamanan data.
 - Cross-Site Request Forgery (CSRF): Serangan CSRF dapat menggunakan cookies untuk mengirim permintaan yang tidak sah atas nama pengguna yang sudah masuk. Untuk melindungi terhadap serangan ini, kita harus memastikan cookie yang digunakan untuk otentikasi diimplementasikan dengan benar.
 - Penggunaan Berlebihan: Terlalu banyak cookies dapat memperlambat performa situs web karena setiap permintaan HTTP akan membawa semua cookies yang diperlukan. Ini dapat mengganggu pengalaman pengguna, terutama pada perangkat dengan koneksi internet yang lambat.
+
+# TUGAS 5
+**Nama: Joy Debora Sitorus**\
+**NPM: 2206082991**\
+**Kelas: PBP D**
+
+# CHECKLIST TUGAS
+![App4](https://i.postimg.cc/jdSMNrp2/Whats-App-Image-2023-09-27-at-06-34-15.jpg)
+## 1. Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+
+
+## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+
+
+## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+Element Selector:
+Selector elemen memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
+Waktu yang Tepat: Gunakan elemen selector ketika kita ingin menerapkan gaya umum ke seluruh elemen dengan jenis yang sama, misalnya, mengatur gaya dasar untuk semua tag <p> atau <h1>.
+
+## Jelaskan HTML5 Tag yang kamu ketahui.
+HTML5 adalah versi terbaru dari bahasa markup HTML (HyperText Markup Language) yang digunakan untuk membuat dan merancang konten web. Berikut adalah beberapa tag HTML5 yang penting dan umum digunakan:
+
+1. <!DOCTYPE html>: Mendefinisikan jenis dokumen dan versi HTML yang digunakan (HTML5).
+2. <html>: Menandakan awal dan akhir dari dokumen HTML.
+3. <head>: Mengandung informasi meta tentang dokumen, termasuk judul halaman, link ke stylesheet, skrip, dan elemen-elemen lainnya yang tidak ditampilkan secara langsung pada halaman web.
+4. <title>: Mendefinisikan judul dokumen HTML, yang ditampilkan pada bilah judul atau tab browser.
+5. <meta>: Menyediakan informasi meta tentang dokumen, seperti karakter encoding, deskripsi, dan kata kunci untuk mesin pencari.
+6. <style>: Mengandung aturan gaya CSS yang diterapkan pada elemen-elemen dalam dokumen HTML.
+7. <body>: Berisi semua konten yang ditampilkan pada halaman web, termasuk teks, gambar, tautan, elemen formulir, dll.
+8. <h1>, <h2>, <h3>, <h4>, <h5>, <h6>: Menandai judul berjenjang (heading) pada halaman web, dengan <h1> sebagai judul utama dan <h6> sebagai judul terkecil.
+9. <p>: Mendefinisikan paragraf teks.
+10. <a>: Membuat tautan (hipertaut) ke halaman web lain atau ke halaman dalam situs yang sama.
+11. <img>: Menyisipkan gambar ke dalam halaman web.
+12. <ul>, <ol>, <li>: Mengatur daftar tidak berurutan (unordered list) dan daftar berurutan (ordered list) serta item dalam daftar.
+13. <div>: Menandai blok elemen yang dapat digunakan untuk mengelompokkan elemen-elemen lainnya dan memungkinkan penerapan gaya atau perilaku tertentu.
+14. <form>: Membuat formulir interaktif yang dapat digunakan untuk mengumpulkan data dari pengguna, dengan elemen-elemen seperti input, textarea, dan tombol submit.
+15. <input>: Menyediakan berbagai jenis elemen input, seperti teks, sandi, checkbox, radio button, dll.
+16. <button>: Membuat tombol pada formulir, yang dapat digunakan untuk mengirimkan formulir atau menjalankan skrip JavaScript tertentu saat diklik.
+17. <header>, <footer>, <section>, <article>, <aside>: Elemen-elemen ini digunakan untuk memberi struktur lebih spesifik pada halaman web, membantu mesin pencari dan pembaca layar memahami konten dengan lebih baik.
+
+## Jelaskan perbedaan antara margin dan padding.
+Margin dan Padding adalah dua properti dalam CSS yang digunakan untuk mengatur ruang di sekitar dan di dalam elemen HTML. 
+1. **Margin:**
+Margin adalah ruang di luar batas elemen. Margin mengontrol jarak antara batas elemen dan elemen-elemen lain di sekitarnya. Elemen-elemen yang berdekatan dengan elemen yang memiliki margin akan menghormati ruang margin tersebut. Margin bersifat transparan, yang berarti latar belakang elemen di belakangnya akan terlihat melalui margin.
+2. **Padding:**
+Padding adalah ruang di dalam batas elemen. Padding mengontrol jarak antara batas elemen dan kontennya. Dalam hal ini, "konten" merujuk pada teks, gambar, atau elemen lain di dalam elemen yang bersangkutan. Padding tidak bersifat transparan; jika kita memberikan latar belakang pada elemen, latar belakang tersebut akan mencakup area padding.
+
+Perbedaan Utama:
+- Area yang Dipengaruhi: Margin mempengaruhi ruang di luar elemen, sementara padding mempengaruhi ruang di dalam elemen.
+- Transparansi: Margin bersifat transparan, sementara padding tidak. Artinya, latar belakang elemen di belakang margin akan terlihat melalui margin, tetapi tidak melalui padding.
+- Interaksi dengan Elemen Lain: Margin mempengaruhi jarak antara elemen dengan elemen-elemen lain di sekitarnya. Padding, di sisi lain, mempengaruhi jarak antara konten elemen dan batasnya sendiri.
+
+## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+Tailwind CSS dan Bootstrap adalah dua framework CSS yang populer digunakan dalam pengembangan web. Mereka memiliki pendekatan dan filosofi yang berbeda, dan pilihan antara keduanya tergantung pada kebutuhan proyek dan preferensi pengembang. Berikut adalah perbedaan utama antara keduanya dan kapan sebaiknya kita menggunakan salah satu daripadanya:
+
+**Tailwind CSS:**
+1. Utility-First Approach: Tailwind CSS menggunakan pendekatan "utility-first", yang berarti membangun tampilan dengan menggabungkan berbagai kelas ke dalam elemen HTML. Ini memberikan tingkat fleksibilitas yang tinggi dan memungkinkan pengembang untuk membuat tampilan yang sangat kustom sesuai kebutuhan.
+2. Konfigurasi yang Kuat: Tailwind CSS memungkinkan kita mengkonfigurasi setiap aspek gaya dalam proyek, termasuk warna, jenis font, margin, padding, dan lain-lain. Ini membuatnya sangat dapat disesuaikan.
+3. File CSS yang Kecil: Tailwind CSS menghasilkan file CSS yang relatif kecil karena hanya menghasilkan CSS yang benar-benar digunakan dalam proyek .
+4. Tidak Ada Gaya Bawaan: Tailwind CSS datang dengan sedikit atau tanpa gaya bawaan, yang berarti kita perlu merancang tampilan dari awal atau membangunnya dengan komponen yang tersedia dari pihak ketiga.
+
+**Bootstrap:**
+1. Component-Based: Bootstrap adalah framework CSS yang berbasis komponen, yang berarti kita dapat dengan cepat membangun tampilan menggunakan komponen yang telah tersedia. Ini mempercepat pengembangan.
+2. Desain Responsif: Bootstrap menyertakan desain responsif secara bawaan, sehingga tampilan aplikasi akan baik di perangkat desktop maupun mobile tanpa banyak kerumitan.
+3. Gaya Bawaan: Bootstrap memiliki gaya bawaan yang memberikan tampilan dasar yang baik. Kita dapat menyesuaikannya sesuai kebutuhan, tetapi jika ingin tampilan yang benar-benar unik, kita mungkin perlu menulis lebih banyak kode CSS kustom.
+4. Mudah Digunakan: Bootstrap adalah pilihan yang baik untuk pengembang yang ingin cepat membangun tampilan yang baik dengan komponen-komponen yang sudah ada.
+
+*Kapan Menggunakan Tailwind CSS:*
+- Tailwind CSS cocok digunakan ketika kita ingin tingkat fleksibilitas tinggi dalam merancang tampilan web aplikasi.
+- Ini berguna jika ingin menghindari gaya bawaan dan memiliki kendali penuh atas tampilan aplikasi.
+- Tailwind cocok untuk pengembang yang sudah terbiasa dengan pendekatan "utility-first" dalam pengembangan tampilan.
+
+*Kapan Menggunakan Bootstrap:*
+- Bootstrap sangat berguna ketika ingin membangun tampilan dengan cepat menggunakan komponen yang telah ada.
+- Ini cocok untuk proyek yang memerlukan responsivitas dan desain yang dapat diandalkan di berbagai perangkat.
+- Bootstrap adalah pilihan yang baik jika ingin menghemat waktu dalam pengembangan.
