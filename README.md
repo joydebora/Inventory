@@ -1049,6 +1049,32 @@ Mengubah code pada berkas `login.html` menjadi:
 
 </html>
 ```
+**Penjelasan alur pada berkas `login.html`**
+1. *HTML Structure:*
+Halaman dimulai dengan mendeklarasikan tipe dokumen (`<!DOCTYPE html>`) dan mengatur bahasa (Bahasa Inggris) serta menghubungkan file CSS Bootstrap (path/to/bootstrap.min.css).
+Struktur halaman terdiri dari `<head>` yang berisi meta tag, judul halaman, dan referensi ke file CSS.
+Konten halaman berada dalam `<body>` tag. Dalam `<body>`, ada sebuah `<div>` dengan kelas container yang mengandung elemen-elemen lainnya.
+
+2. *CSS Styling:*
+Elemen-elemen halaman, seperti body, container, judul halaman, formulir, dan tombol diberi gaya menggunakan CSS. Warna latar belakang, ukuran teks, efek bayangan, border, dan transisi saat interaksi dengan elemen (seperti hover) telah ditentukan.
+
+3. *Formulir Login:*
+Halaman ini adalah formulir login yang meminta pengguna untuk memasukkan username dan password.
+Formulir menggunakan metode POST untuk mengirimkan data. Ada dua input: username (`<input type="text">`) dan password (`<input type="password">`), masing-masing dengan label yang sesuai.
+CSRF token ({% csrf_token %}) disertakan untuk keamanan formulir.
+
+4. *Error Messages:*
+Jika ada pesan kesalahan ({% if messages %}), pesan-pesan itu ditampilkan dalam bentuk daftar (unordered list) dengan kelas error-messages.
+Setiap pesan kesalahan ditampilkan sebagai item daftar.
+
+5. *Register Link:*
+Terdapat juga tautan untuk mendaftar jika pengguna belum memiliki akun. Tautan ini mengarahkan ke URL yang dihasilkan oleh tag URL Django ({% url 'main:register' %}).
+
+6. *JavaScript:*
+File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
+
+7. *Django Template Tags:*
+Beberapa tag template Django ({% csrf_token %}, {% if messages %}, {% url 'main:register' %}) digunakan untuk menyertakan CSRF token, menampilkan pesan kesalahan, dan menghasilkan URL untuk tautan mendaftar.
 
 ### Halaman register
 ![Register](https://i.postimg.cc/6qw3JwnY/Whats-App-Image-2023-10-04-at-08-54-07-2.jpg)
@@ -1171,6 +1197,8 @@ Mengubah code pada berkas `register.html` menjadi:
 
 </html>
 ```
+**Penjelasan alur pada berkas `register.html`**
+
 
 ### Halaman tambah inventori
 ![Create_product](https://i.postimg.cc/BQS6mSqv/Whats-App-Image-2023-10-04-at-08-54-07-3.jpg)
@@ -1305,6 +1333,7 @@ Mengubah code pada berkas `create_product.html` menjadi:
 
 </html>
 ```
+**Penjelasan alur pada berkas `create_product.html`**
 
 ## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
 ### Halaman daftar inventori
@@ -1547,6 +1576,8 @@ Mengubah code pada berkas `main.html` menjadi:
 
 </html>
 ```
+**Penjelasan alur pada berkas `main.html`**
+
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Element Selector:
