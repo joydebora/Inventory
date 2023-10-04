@@ -1646,7 +1646,7 @@ Berikut adalah beberapa jenis CSS selectors:
 - ID Selector: Memilih elemen berdasarkan ID atributnya. Contoh: `#unique-id { background-color: yellow; }`
 
 **Element Selector:**
-Elemenet selector merupakan salah satu dari 3 bagian CSS selectors. Element sector memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
+Element selector merupakan salah satu dari 3 bagian CSS selectors. Element sector memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
 
 1. Element selector memungkinkan Anda untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat Anda ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.\
 *Kapan Menggunakannya?*\
