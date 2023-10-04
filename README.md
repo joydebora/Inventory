@@ -925,15 +925,628 @@ Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
 ### Halaman login
 ![Login](https://i.postimg.cc/W1fhDBc1/Whats-App-Image-2023-10-04-at-08-54-07-1.jpg)
 
+Mengubah code pada berkas `login.html` menjadi:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petkeeper Inventory</title>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Sertakan Bootstrap CSS -->
+    <style>
+        body {
+            background-color: #fce4ec; /* Warna latar belakang halaman (pink muda) */
+            color: #6a0572; /* Warna teks (ungu tua) */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+        .page-title {
+            color: #d81b60; /* Warna judul halaman (pink tua) */
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            white-space: nowrap; /* Memastikan judul tidak terputus */
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            box-shadow: 0px 10px 30px rgba(90, 24, 154, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: calc(100% - 40px); /* Lebar input dikurangi dengan padding horizontal */
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #d81b60; /* Warna border input (pink tua) */
+            border-radius: 25px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #6a0572; /* Warna border input saat focus (ungu tua) */
+            box-shadow: 0 0 0 0.2rem rgba(106, 5, 114, 0.25); /* Efek shadow saat focus */
+        }
+
+        .btn-primary {
+            background-color: #d81b60; /* Warna latar belakang tombol (pink tua) */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a0572; /* Warna latar belakang tombol saat hover (ungu tua) */
+        }
+
+        .error-messages {
+            color: #d81b60; /* Warna teks pesan error (pink tua) */
+            list-style: none;
+            padding: 0;
+        }
+
+        .error-messages li {
+            margin-bottom: 0.5rem;
+        }
+
+        .fun-emoji {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-4">
+        <h1 class="text-center mb-4 page-title">
+            <span class="fun-emoji">🐾</span>Welcome to the Petkeeper Inventory App! <span class="fun-emoji">🐾</span>
+        </h1>
+        
+        <div class="login-container card">
+            <h2 class="text-center mb-4">Login</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+    
+            {% if messages %}
+                <ul class="error-messages mt-4">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    
+            <p class="mt-3">Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+        </div>
+    </div>
+
+    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Sertakan Bootstrap JS (optional) -->
+</body>
+
+</html>
+```
+
 ### Halaman register
 ![Register](https://i.postimg.cc/6qw3JwnY/Whats-App-Image-2023-10-04-at-08-54-07-2.jpg)
+
+Mengubah code pada berkas `register.html` menjadi:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Inventori</title>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Sertakan Bootstrap CSS -->
+    <style>
+        body {
+            background-color: #fce4ec; /* Warna latar belakang halaman (pink muda) */
+            color: #6a0572; /* Warna teks (ungu tua) */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+        .page-title {
+            color: #d81b60; /* Warna judul halaman (pink tua) */
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            white-space: nowrap; /* Memastikan judul tidak terputus */
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            box-shadow: 0px 10px 30px rgba(90, 24, 154, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: calc(100% - 40px); /* Lebar input dikurangi dengan padding horizontal */
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #d81b60; /* Warna border input (pink tua) */
+            border-radius: 25px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #6a0572; /* Warna border input saat focus (ungu tua) */
+            box-shadow: 0 0 0 0.2rem rgba(106, 5, 114, 0.25); /* Efek shadow saat focus */
+        }
+
+        .btn-primary {
+            background-color: #d81b60; /* Warna latar belakang tombol (pink tua) */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a0572; /* Warna latar belakang tombol saat hover (ungu tua) */
+        }
+
+        .fun-emoji {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4 page-title">
+            <span class="fun-emoji">🌟</span>Create Your Magical Account! <span class="fun-emoji">🌟</span>
+        </h1>
+    
+        <div class="login-container card p-4">
+            <h2 class="text-center mb-4">Join the Petkeeper Family!</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="input-label">Username:</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}" class="input-label">Password:</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="input-label">Confirm Password:</label>
+                    {{ form.password2 }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Join the Magic!</button>
+            </form>
+    
+            {% if messages %}
+                <ul class="error-messages mt-4">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    
+            <p class="mt-3 text-center">Already have an account? <a href="{% url 'main:login' %}">Login here</a></p>
+        </div>
+    </div>
+    
+    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Sertakan Bootstrap JS (optional) -->
+</body>
+
+</html>
+```
 
 ### Halaman tambah inventori
 ![Create_product](https://i.postimg.cc/BQS6mSqv/Whats-App-Image-2023-10-04-at-08-54-07-3.jpg)
 
+Mengubah code pada berkas `create_product.html` menjadi:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petkeeper Inventory</title>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Sertakan Bootstrap CSS -->
+    <style>
+        body {
+            background-color: #fce4ec; /* Warna latar belakang halaman (pink muda) */
+            color: #6a0572; /* Warna teks (ungu tua) */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+        .page-title {
+            color: #d81b60; /* Warna judul halaman (pink tua) */
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            white-space: nowrap; /* Memastikan judul tidak terputus */
+        }
+
+        .product-form-container {
+            background-color: #ffffff;
+            box-shadow: 0px 10px 30px rgba(90, 24, 154, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: calc(100% - 40px); /* Lebar input dikurangi dengan padding horizontal */
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #d81b60; /* Warna border input (pink tua) */
+            border-radius: 25px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #6a0572; /* Warna border input saat focus (ungu tua) */
+            box-shadow: 0 0 0 0.2rem rgba(106, 5, 114, 0.25); /* Efek shadow saat focus */
+        }
+
+        .btn-primary {
+            background-color: #d81b60; /* Warna latar belakang tombol (pink tua) */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a0572; /* Warna latar belakang tombol saat hover (ungu tua) */
+        }
+
+        .error-messages {
+            color: #d81b60; /* Warna teks pesan error (pink tua) */
+            list-style: none;
+            padding: 0;
+        }
+
+        .error-messages li {
+            margin-bottom: 0.5rem;
+        }
+
+        .fun-emoji {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-4">
+        <h1 class="text-center mb-4 page-title">
+            <span class="fun-emoji">🌈</span>Welcome to the Petkeeper Inventory App!<span class="fun-emoji">🐾</span>
+        </h1>
+        
+        <div class="product-form-container card">
+            <h2 class="text-center mb-4">Add New Product</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">Product Name:</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}" class="form-label">Description:</label>
+                    {{ form.description }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.price.id_for_label }}" class="form-label">Price:</label>
+                    {{ form.price }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.amount.id_for_label }}" class="form-label">Amount:</label>
+                    {{ form.amount }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+            </form>
+
+            {% if messages %}
+                <ul class="error-messages mt-4">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Sertakan Bootstrap JS (optional) -->
+</body>
+
+</html>
+```
+
 ## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
 ### Halaman daftar inventori
 ![Main](https://i.postimg.cc/ZKH9m9f3/Whats-App-Image-2023-10-04-at-08-54-07.jpg)
+
+Mengubah code pada berkas `main.html` menjadi:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Inventori</title>
+    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Sertakan Bootstrap CSS -->
+    <style>
+        body {
+            background-color: #f4a29e; /* Warna latar belakang halaman (pink coral pastel) */
+            color: #b19cd9; /* Warna teks (ungu pastel) */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Ganti dengan font pilihan Anda */
+        }
+
+        .container {
+            max-width: 960px; /* Lebar maksimum kontainer */
+        }
+
+        .card {
+            background-color: #ffffff; /* Warna latar belakang kartu (putih) */
+            color: #5a189a; /* Warna teks pada kartu */
+            border: none; /* Hapus border kartu jika ada */
+            box-shadow: 0px 10px 30px rgba(90, 24, 154, 0.2); /* Efek bayangan pada kartu */
+            border-radius: 10px; /* Sudut melengkung kartu */
+            transition: all 0.3s ease; /* Efek transisi pada kartu */
+            margin: 20px 10px; /* Ruang dari tepi halaman */
+            width: 45%; /* Lebar kartu 45% dari lebar parent */
+            float: left; /* Floating kartu ke kiri */
+            height: 100%; /* Tentukan tinggi kartu */
+            min-height: 300px; /* Tentukan tinggi minimum kartu */
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Mengangkat kartu saat dihover */
+            box-shadow: 0px 20px 40px rgba(90, 24, 154, 0.3); /* Bayangan yang lebih tebal saat dihover */
+        }
+
+        .navbar {
+            background-color: #f4a29e; /* Warna latar belakang navbar (pink coral pastel) */
+            color: #b19cd9; /* Warna teks navbar */
+        }
+
+        .navbar-nav li {
+            list-style: none; /* Menghilangkan poin bulatan dari elemen li */
+        }
+
+        .navbar-nav .nav-link {
+            display: flex;
+            align-items: center;
+            margin-left: -40px;
+        }
+
+        .navbar-brand {
+            font-weight: bold; /* Teks brand navbar lebih tebal */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #d0005e; /* Warna teks judul halaman (pink tua) */
+        }
+
+        .btn-primary {
+            background-color: #ffacda; /* Warna latar belakang tombol primary (pink pastel) */
+            color: #6a0572; /* Warna teks tombol (ungu tua) */
+            border: none; /* Hapus border tombol */
+            border-radius: 25px; /* Sudut melengkung tombol */
+            transition: background-color 0.3s ease; /* Transisi perubahan warna saat hover */
+            font-size: 0.9em; /* Ukuran teks tombol */
+            margin: 5px; /* Ruang dari tepi tombol */
+            padding: 8px 16px; /* Padding tombol */
+            border: 2px solid #5a189a; /* Border tombol */
+            position: relative; /* Relatif terhadap posisi normal */
+            overflow: hidden; /* Sembunyikan konten yang melampaui batas tombol */
+            width: fit-content; /* Menyesuaikan lebar dengan isi tombol */
+        }
+
+        .btn-primary:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border: 2px solid #ff6b98;
+            border-radius: 50%;
+            opacity: 0;
+            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .btn-primary:hover:before {
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff6b98; /* Warna latar belakang tombol primary saat dihover (pink pastel lebih terang) */
+            color: #ffffff; /* Warna teks tombol saat dihover (putih) */
+        }
+
+        .card-title {
+            color: #ff6b98; /* Warna teks judul halaman (pink pastel) */
+            font-size: 1.5em; /* Ukuran teks judul kartu */
+            text-transform: uppercase; /* Ubah teks judul menjadi huruf kapital */
+            margin-bottom: 0.2em; /* Ruang bawah judul kartu */
+        }
+
+        .card-body {
+            border-top: 2px solid #ff6b98; /* Garis atas pada bagian dalam kartu (pink pastel) */
+            padding: 1em; /* Ruang di dalam kartu */
+        }
+
+        .card-table th, .card-table td {
+            color: #ffacda; /* Warna teks header tabel (pink pastel) */
+        }
+
+        .card-table th {
+            width: 30%; /* Lebar kolom header tabel */
+            color: #ffacda; /* Warna teks header tabel (pink pastel) */
+            text-align: left; /* Teks dalam header tabel berada di sebelah kiri */
+        }
+
+        .card-table td {
+            color: #5a189a; /* Warna teks sel tabel */
+        }
+
+        .info-table {
+            font-family: 'Arial', sans-serif; /* Menggunakan font Arial untuk tabel */
+            margin-top: 10px; /* Ruang atas dari tabel */
+            border-collapse: collapse; /* Menggabungkan garis batas antar sel tabel */
+            width: 50%; /* Lebar tabel 100% dari lebar parent */
+            background-color: #ffacda; /* Warna latar belakang tabel (pink pastel) */
+            border-radius: 20px; /* Sudut melengkung tabel */
+        }
+
+        .info-table th, .info-table td {
+            border: 2px solid #e03859; /* Garis batas sel tabel */
+            padding: 10px; /* Ruang dalam sel tabel */
+            text-align: left; /* Teks dalam sel tabel berada di sebelah kiri */
+        }
+
+        .info-table th {
+            background-color: #e03859; /* Warna latar belakang header tabel (pink tua) */
+            font-weight: bold; /* Teks header tabel lebih tebal */
+            color: #ffffff; /* Warna teks header tabel (putih) */
+        }
+
+        .info-table td.description {
+            font-style: italic; /* Teks deskripsi tabel menjadi miring */
+            color: #d0005e; /* Warna teks deskripsi tabel (pink tua) */
+        }
+
+        .info-table tr:nth-child(even) {
+            background-color: #ffedf2; /* Warna latar belakang setiap baris genap (pink muda) */
+        }
+
+        .info-table tr:nth-child(odd) {
+            background-color: #ffdde1; /* Warna latar belakang setiap baris ganjil (pink pastel) */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-4">
+        <h1 class="text-center mb-4 page-title">Welcome to the Petkeeper Inventory App!🐾</h1>
+
+        <table class="info-table">
+            <tr>
+                <th>Nama</th>
+                <td class="description">Joy Debora Sitorus</td>
+            </tr>
+            <tr>
+                <th>NPM</th>
+                <td class="description">2206082991</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td class="description">PBP D</td>
+            </tr>
+        </table>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:create_product' %}">
+                        <div class="btn-primary">Add New Super Cute Product💖</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:logout' %}">
+                        <div class="btn-primary">Logout and Have a Magical Day With Your Pet🌈</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <table class="card-table">
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td>{{ product.amount }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ product.description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Category</th>
+                                    <td>{{ product.category }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>{{ product.price }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Sertakan Bootstrap JS (optional) -->
+</body>
+
+</html>
+```
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Element Selector:
