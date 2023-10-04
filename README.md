@@ -922,11 +922,17 @@ Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
 
 # CHECKLIST TUGAS
 ## 1. Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+#### Halaman login
 ![Login](https://i.postimg.cc/W1fhDBc1/Whats-App-Image-2023-10-04-at-08-54-07-1.jpg)
+
+#### Halaman register
 ![Register](https://i.postimg.cc/6qw3JwnY/Whats-App-Image-2023-10-04-at-08-54-07-2.jpg)
+
+#### Halaman tambah inventori
 ![Create_product](https://i.postimg.cc/BQS6mSqv/Whats-App-Image-2023-10-04-at-08-54-07-3.jpg)
 
 ## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+#### Halaman daftar inventori
 ![Main](https://i.postimg.cc/ZKH9m9f3/Whats-App-Image-2023-10-04-at-08-54-07.jpg)
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
