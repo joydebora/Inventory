@@ -1638,16 +1638,23 @@ Produk-produk ini diambil dari variabel products yang kemungkinan besar berasal 
 File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
-Element Selector:
-Selector elemen memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
+CSS selectors adalah pola atau pola pencocokan yang digunakan untuk memilih dan menggaya elemen HTML pada halaman web. Setiap aturan CSS membutuhkan sebuah selector untuk menentukan elemen mana yang akan diberi gaya. CSS selector dapat berupa nama elemen, class, ID, pseudo-class, pseudo-element, atribut, atau kombinasi dari beberapa tipe ini.
+
+Berikut adalah beberapa jenis CSS selectors:
+- Element Selector: Memilih elemen berdasarkan nama elemennya. Contoh: `p { color: blue; }`
+- Class Selector: Memilih elemen berdasarkan class atributnya. Contoh: `.my-class { font-weight: bold; }`
+- ID Selector: Memilih elemen berdasarkan ID atributnya. Contoh: `#unique-id { background-color: yellow; }`
+
+**Element Selector:**
+Elemenet selector merupakan salah satu dari 3 bagian CSS selectors. Element sector memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
 
 1. Element selector memungkinkan Anda untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat Anda ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.\
-**Kapan Menggunakan:**\
+*Kapan Menggunakannya?*\
 Gunakan element selector ketika Anda ingin menggaya semua elemen dengan nama elemen tertentu, seperti `<p>`, `<h1>`, `<ul>`, dan lainnya.
 Berguna saat Anda ingin mengaplikasikan gaya global yang berlaku untuk semua elemen dengan nama elemen tersebut.
 
 2. Penggunaan element selector bisa lebih efisien dalam hal kinerja dibandingkan dengan class selector atau ID selector karena browser lebih cepat dalam menerapkan gaya ke elemen berdasarkan nama elemen. Ini penting saat Anda ingin menggaya banyak elemen pada halaman, seperti paragraf, judul, atau daftar.\
-**Kapan Menggunakan:**\
+*Kapan Menggunakannya?*\
 Ketika Anda ingin mempengaruhi banyak elemen dengan nama elemen yang sama, gunakan element selector untuk meminimalkan beban kinerja browser.
 
 ## Jelaskan HTML5 Tag yang kamu ketahui.
