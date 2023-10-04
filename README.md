@@ -1375,7 +1375,7 @@ Beberapa tag template Django ({% csrf_token %}, {% if messages %}) digunakan unt
 
 ## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
 ### Halaman daftar inventori
-![Main](https://i.postimg.cc/ZRrNdJmh/Whats-App-Image-2023-10-04-at-09-42-59.jpg)
+![Main](https://i.postimg.cc/25WbsCVB/Whats-App-Image-2023-10-04-at-09-44-35.jpg)
 
 Mengubah code pada berkas `main.html` menjadi:
 ```
