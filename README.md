@@ -1071,7 +1071,7 @@ Setiap pesan kesalahan ditampilkan sebagai item daftar.
 Terdapat juga tautan untuk mendaftar jika pengguna belum memiliki akun. Tautan ini mengarahkan ke URL yang dihasilkan oleh tag URL Django ({% url 'main:register' %}).
 
 6. *JavaScript:*
-File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
+File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
 
 7. *Django Template Tags:*
 Beberapa tag template Django ({% csrf_token %}, {% if messages %}, {% url 'main:register' %}) digunakan untuk menyertakan CSRF token, menampilkan pesan kesalahan, dan menghasilkan URL untuk tautan mendaftar.
@@ -1213,7 +1213,7 @@ CSRF token ({% csrf_token %}) disertakan untuk keamanan formulir.
 Jika ada pesan kesalahan ({% if messages %}), pesan-pesan itu ditampilkan dalam bentuk daftar (unordered list) dengan kelas error-messages. Setiap pesan kesalahan ditampilkan sebagai item daftar.
 
 4. *JavaScript:*
-File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
+File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
 
 5. *Django Template Tags:*
 Beberapa tag template Django ({% csrf_token %}, {% if messages %}) digunakan untuk menyertakan CSRF token dan menampilkan pesan kesalahan (jika ada).
@@ -1368,7 +1368,7 @@ CSRF token ({% csrf_token %}) disertakan untuk keamanan formulir.
 Jika ada pesan kesalahan ({% if messages %}), pesan-pesan itu ditampilkan dalam bentuk daftar (unordered list) dengan kelas error-messages. Setiap pesan kesalahan ditampilkan sebagai item daftar.
 
 4. *JavaScript:*
-File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
+File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
 
 5. *Django Template Tags:*
 Beberapa tag template Django ({% csrf_token %}, {% if messages %}) digunakan untuk menyertakan CSRF token dan menampilkan pesan kesalahan (jika ada).
@@ -1391,7 +1391,7 @@ Mengubah code pada berkas `main.html` menjadi:
         body {
             background-color: #f4a29e; /* Warna latar belakang halaman (pink coral pastel) */
             color: #b19cd9; /* Warna teks (ungu pastel) */
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Ganti dengan font pilihan Anda */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Ganti dengan font pilihan */
         }
 
         .container {
@@ -1635,7 +1635,7 @@ Kartu-kartu ini dibuat dengan efek bayangan dan sedikit melayang saat dihover, m
 Produk-produk ini diambil dari variabel products yang kemungkinan besar berasal dari hasil query ke database pada sisi server.
 
 6. *JavaScript:*
-File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika Anda ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
+File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. Ini penting jika kita ingin menggunakan komponen JavaScript dari Bootstrap, meskipun dalam halaman ini, tidak ada komponen Bootstrap JavaScript yang digunakan.
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 CSS selectors adalah pola atau pola pencocokan yang digunakan untuk memilih dan menggaya elemen HTML pada halaman web. Setiap aturan CSS membutuhkan sebuah selector untuk menentukan elemen mana yang akan diberi gaya. CSS selector dapat berupa nama elemen, class, ID, pseudo-class, pseudo-element, atribut, atau kombinasi dari beberapa tipe ini.
@@ -1648,14 +1648,14 @@ Berikut adalah beberapa jenis CSS selectors:
 **Element Selector:**
 Element selector merupakan salah satu dari 3 bagian CSS selectors. Element sector memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
 
-1. Element selector memungkinkan Anda untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat Anda ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.\
+1. Element selector memungkinkan untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.\
 *Kapan Menggunakannya?*\
-Gunakan element selector ketika Anda ingin menggaya semua elemen dengan nama elemen tertentu, seperti `<p>`, `<h1>`, `<ul>`, dan lainnya.
-Berguna saat Anda ingin mengaplikasikan gaya global yang berlaku untuk semua elemen dengan nama elemen tersebut.
+Gunakan element selector ketika ingin menggaya semua elemen dengan nama elemen tertentu, seperti `<p>`, `<h1>`, `<ul>`, dan lainnya.
+Berguna saat kita ingin mengaplikasikan gaya global yang berlaku untuk semua elemen dengan nama elemen tersebut.
 
-2. Penggunaan element selector bisa lebih efisien dalam hal kinerja dibandingkan dengan class selector atau ID selector karena browser lebih cepat dalam menerapkan gaya ke elemen berdasarkan nama elemen. Ini penting saat Anda ingin menggaya banyak elemen pada halaman, seperti paragraf, judul, atau daftar.\
+2. Penggunaan element selector bisa lebih efisien dalam hal kinerja dibandingkan dengan class selector atau ID selector karena browser lebih cepat dalam menerapkan gaya ke elemen berdasarkan nama elemen. Ini penting saat kita ingin menggaya banyak elemen pada halaman, seperti paragraf, judul, atau daftar.\
 *Kapan Menggunakannya?*\
-Ketika Anda ingin mempengaruhi banyak elemen dengan nama elemen yang sama, gunakan element selector untuk meminimalkan beban kinerja browser.
+Ketika ingin mempengaruhi banyak elemen dengan nama elemen yang sama, gunakan element selector untuk meminimalkan beban kinerja browser.
 
 ## Jelaskan HTML5 Tag yang kamu ketahui.
 HTML5 adalah versi terbaru dari bahasa markup HTML (HyperText Markup Language) yang digunakan untuk membuat dan merancang konten web. Berikut adalah beberapa tag HTML5 yang penting dan umum digunakan:
