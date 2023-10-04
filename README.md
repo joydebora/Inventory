@@ -1616,15 +1616,15 @@ Mengubah code pada berkas `main.html` menjadi:
 ```
 **Penjelasan alur pada berkas `main.html`**
 1. *HTML Structure:*
-Halaman dimulai dengan mendeklarasikan tipe dokumen (<!DOCTYPE html>) dan mengatur bahasa (Bahasa Inggris) serta menghubungkan file CSS Bootstrap (path/to/bootstrap.min.css).
-Struktur halaman terdiri dari <head> yang berisi meta tag, judul halaman, dan referensi ke file CSS.
-Konten halaman berada dalam <body> tag. Dalam <body>, ada elemen-elemen seperti judul halaman, informasi pengguna (Nama, NPM, Kelas), tombol untuk menambah produk baru, tombol logout, dan daftar produk yang ditampilkan dalam bentuk kartu (<div class="card">).
+Halaman dimulai dengan mendeklarasikan tipe dokumen (`<!DOCTYPE html>`) dan mengatur bahasa (Bahasa Inggris) serta menghubungkan file CSS Bootstrap (path/to/bootstrap.min.css).
+Struktur halaman terdiri dari `<head>` yang berisi meta tag, judul halaman, dan referensi ke file CSS.
+Konten halaman berada dalam `<body>` tag. Dalam `<body>`, ada elemen-elemen seperti judul halaman, informasi pengguna (Nama, NPM, Kelas), tombol untuk menambah produk baru, tombol logout, dan daftar produk yang ditampilkan dalam bentuk kartu (`<div class="card">`).
 
 2. *CSS Styling:*
 Elemen-elemen halaman, seperti body, container, kartu, navbar, tombol, judul kartu, dan tabel, diberi gaya menggunakan CSS. Warna latar belakang, ukuran teks, efek bayangan, border, dan transisi saat interaksi dengan elemen telah ditentukan.
 
 3. *User Information Table:*
-Informasi pengguna (Nama, NPM, Kelas) ditampilkan dalam bentuk tabel (<table class="info-table">). Setiap baris tabel memiliki kolom judul (Nama, NPM, Kelas) dan deskripsi yang berisi informasi pengguna.
+Informasi pengguna (Nama, NPM, Kelas) ditampilkan dalam bentuk tabel (`<table class="info-table">`). Setiap baris tabel memiliki kolom judul (Nama, NPM, Kelas) dan deskripsi yang berisi informasi pengguna.
 
 4. *Navbar and Buttons:*
 Terdapat navbar dengan dua tombol. Tombol pertama mengarah ke halaman penambahan produk baru ({% url 'main:create_product' %}), dan tombol kedua mengarah ke fungsi logout ({% url 'main:logout' %}). Tombol-tombol ini dibuat dengan warna latar belakang dan efek hover yang berbeda untuk menarik perhatian pengguna.
@@ -1641,13 +1641,13 @@ File Bootstrap JavaScript bundle (path/to/bootstrap.bundle.min.js) disertakan. I
 Element Selector:
 Selector elemen memungkinkan kita menerapkan gaya pada semua elemen dengan jenis yang sama. Ini sangat berguna ketika kita ingin menerapkan gaya umum ke beberapa elemen sekaligus tanpa menambahkan kelas atau ID ke masing-masing elemen tersebut.
 
-1. Element selector memungkinkan Anda untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat Anda ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.
-**Kapan Menggunakan:**
+1. Element selector memungkinkan Anda untuk dengan jelas dan pasti menggaya semua elemen dengan nama tertentu pada halaman. Ini berguna saat Anda ingin mengaplikasikan gaya yang sama pada semua elemen dengan nama tersebut, tanpa harus memberikan class atau ID khusus pada setiap elemen tersebut.\
+**Kapan Menggunakan:**\
 Gunakan element selector ketika Anda ingin menggaya semua elemen dengan nama elemen tertentu, seperti `<p>`, `<h1>`, `<ul>`, dan lainnya.
 Berguna saat Anda ingin mengaplikasikan gaya global yang berlaku untuk semua elemen dengan nama elemen tersebut.
 
-2. Penggunaan element selector bisa lebih efisien dalam hal kinerja dibandingkan dengan class selector atau ID selector karena browser lebih cepat dalam menerapkan gaya ke elemen berdasarkan nama elemen. Ini penting saat Anda ingin menggaya banyak elemen pada halaman, seperti paragraf, judul, atau daftar.
-**Kapan Menggunakan:**
+2. Penggunaan element selector bisa lebih efisien dalam hal kinerja dibandingkan dengan class selector atau ID selector karena browser lebih cepat dalam menerapkan gaya ke elemen berdasarkan nama elemen. Ini penting saat Anda ingin menggaya banyak elemen pada halaman, seperti paragraf, judul, atau daftar.\
+**Kapan Menggunakan:**\
 Ketika Anda ingin mempengaruhi banyak elemen dengan nama elemen yang sama, gunakan element selector untuk meminimalkan beban kinerja browser.
 
 ## Jelaskan HTML5 Tag yang kamu ketahui.
