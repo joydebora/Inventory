@@ -921,12 +921,13 @@ Namun, tetap saja ada beberapa risiko potensial yang harus diwaspadai:
 **Kelas: PBP D**
 
 # CHECKLIST TUGAS
-![App4](https://i.postimg.cc/jdSMNrp2/Whats-App-Image-2023-09-27-at-06-34-15.jpg)
 ## 1. Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
-
+![Login](https://i.postimg.cc/W1fhDBc1/Whats-App-Image-2023-10-04-at-08-54-07-1.jpg)
+![Register](https://i.postimg.cc/6qw3JwnY/Whats-App-Image-2023-10-04-at-08-54-07-2.jpg)
+![Create_product](https://i.postimg.cc/BQS6mSqv/Whats-App-Image-2023-10-04-at-08-54-07-3.jpg)
 
 ## 2. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
-
+![Main](https://i.postimg.cc/ZKH9m9f3/Whats-App-Image-2023-10-04-at-08-54-07.jpg)
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Element Selector:
@@ -936,23 +937,23 @@ Waktu yang Tepat: Gunakan elemen selector ketika kita ingin menerapkan gaya umum
 ## Jelaskan HTML5 Tag yang kamu ketahui.
 HTML5 adalah versi terbaru dari bahasa markup HTML (HyperText Markup Language) yang digunakan untuk membuat dan merancang konten web. Berikut adalah beberapa tag HTML5 yang penting dan umum digunakan:
 
-1. <!DOCTYPE html>: Mendefinisikan jenis dokumen dan versi HTML yang digunakan (HTML5).
-2. <html>: Menandakan awal dan akhir dari dokumen HTML.
-3. <head>: Mengandung informasi meta tentang dokumen, termasuk judul halaman, link ke stylesheet, skrip, dan elemen-elemen lainnya yang tidak ditampilkan secara langsung pada halaman web.
-4. <title>: Mendefinisikan judul dokumen HTML, yang ditampilkan pada bilah judul atau tab browser.
-5. <meta>: Menyediakan informasi meta tentang dokumen, seperti karakter encoding, deskripsi, dan kata kunci untuk mesin pencari.
-6. <style>: Mengandung aturan gaya CSS yang diterapkan pada elemen-elemen dalam dokumen HTML.
-7. <body>: Berisi semua konten yang ditampilkan pada halaman web, termasuk teks, gambar, tautan, elemen formulir, dll.
-8. <h1>, <h2>, <h3>, <h4>, <h5>, <h6>: Menandai judul berjenjang (heading) pada halaman web, dengan <h1> sebagai judul utama dan <h6> sebagai judul terkecil.
-9. <p>: Mendefinisikan paragraf teks.
-10. <a>: Membuat tautan (hipertaut) ke halaman web lain atau ke halaman dalam situs yang sama.
-11. <img>: Menyisipkan gambar ke dalam halaman web.
-12. <ul>, <ol>, <li>: Mengatur daftar tidak berurutan (unordered list) dan daftar berurutan (ordered list) serta item dalam daftar.
-13. <div>: Menandai blok elemen yang dapat digunakan untuk mengelompokkan elemen-elemen lainnya dan memungkinkan penerapan gaya atau perilaku tertentu.
-14. <form>: Membuat formulir interaktif yang dapat digunakan untuk mengumpulkan data dari pengguna, dengan elemen-elemen seperti input, textarea, dan tombol submit.
-15. <input>: Menyediakan berbagai jenis elemen input, seperti teks, sandi, checkbox, radio button, dll.
-16. <button>: Membuat tombol pada formulir, yang dapat digunakan untuk mengirimkan formulir atau menjalankan skrip JavaScript tertentu saat diklik.
-17. <header>, <footer>, <section>, <article>, <aside>: Elemen-elemen ini digunakan untuk memberi struktur lebih spesifik pada halaman web, membantu mesin pencari dan pembaca layar memahami konten dengan lebih baik.
+1. `<!DOCTYPE html>`: Mendefinisikan jenis dokumen dan versi HTML yang digunakan (HTML5).
+2. `<html>`: Menandakan awal dan akhir dari dokumen HTML.
+3. `<head>`: Mengandung informasi meta tentang dokumen, termasuk judul halaman, link ke stylesheet, skrip, dan elemen-elemen lainnya yang tidak ditampilkan secara langsung pada halaman web.
+4. `<title>`: Mendefinisikan judul dokumen HTML, yang ditampilkan pada bilah judul atau tab browser.
+5. `<meta>`: Menyediakan informasi meta tentang dokumen, seperti karakter encoding, deskripsi, dan kata kunci untuk mesin pencari.
+6. `<style>`: Mengandung aturan gaya CSS yang diterapkan pada elemen-elemen dalam dokumen HTML.
+7. `<body>`: Berisi semua konten yang ditampilkan pada halaman web, termasuk teks, gambar, tautan, elemen formulir, dll.
+8. `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`: Menandai judul berjenjang (heading) pada halaman web, dengan `<h1>` sebagai judul utama dan `<h6>` sebagai judul terkecil.
+9. `<p>`: Mendefinisikan paragraf teks.
+10. `<a>`: Membuat tautan (hipertaut) ke halaman web lain atau ke halaman dalam situs yang sama.
+11. `<img>`: Menyisipkan gambar ke dalam halaman web.
+12. `<ul>, <ol>, <li>`: Mengatur daftar tidak berurutan (unordered list) dan daftar berurutan (ordered list) serta item dalam daftar.
+13. `<div>`: Menandai blok elemen yang dapat digunakan untuk mengelompokkan elemen-elemen lainnya dan memungkinkan penerapan gaya atau perilaku tertentu.
+14. `<form>`: Membuat formulir interaktif yang dapat digunakan untuk mengumpulkan data dari pengguna, dengan elemen-elemen seperti input, textarea, dan tombol submit.
+15. `<input>`: Menyediakan berbagai jenis elemen input, seperti teks, sandi, checkbox, radio button, dll.
+16. `<button>`: Membuat tombol pada formulir, yang dapat digunakan untuk mengirimkan formulir atau menjalankan skrip JavaScript tertentu saat diklik.
+17. `<header>, <footer>, <section>, <article>, <aside>` Elemen-elemen ini digunakan untuk memberi struktur lebih spesifik pada halaman web, membantu mesin pencari dan pembaca layar memahami konten dengan lebih baik.
 
 ## Jelaskan perbedaan antara margin dan padding.
 Margin dan Padding adalah dua properti dalam CSS yang digunakan untuk mengatur ruang di sekitar dan di dalam elemen HTML. 
