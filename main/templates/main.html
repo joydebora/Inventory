@@ -222,16 +222,114 @@
                                     <th>Price</th>
                                     <td>{{ product.price }}</td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <a class="nav-link" href="{% url 'main:edit_product' product.pk %}">
+                                            <div class="btn-primary">Edit</div>
+                                        </a>
+                                        <a class="nav-link" href="{% url 'main:delete_product' product.pk %}">
+                                            <div class="btn-primary">Delete</div>
+                                        </a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-        
+
+        <script src="path/to/jquery.min.js"></script>
+        <script src="path/to/bootstrap.bundle.min.js"></script>
+
+        <script>
+            async function getProducts() {
+                return fetch("{% url 'main:get_product_json' %}")
+                    .then(response => response.json())
+            }
+
+            async function refreshProducts() {
+                document.getElementById("products").innerHTML = ""
+                const products = await getProducts()
+                const length = Object.keys(products).length
+                let html = '<div class="container">'
+                html += '<p class="lead text-muted">Total Item: ' + length + '</p>'
+                html += '<div class="row row-cols-3">';
+                products.forEach((item) => {
+                    html += '<div class="col-md-6 col-lg-4 mb-5">'
+                    html += '<div class="card text-white" style="border-radius: 1rem; background-color: #F2BED1;">'
+                    html += '<div class="card-body">'
+                    html += '<h5 class="card-title" style="color: #B0578D">' + item.fields.name + '</h5>'
+                    html += '<p class="card-text">' + item.fields.name + '</p>'
+                    html += '<p class="card-text">Amount: ' + item.fields.amount + '</p>'
+                    html += '<p class="card-text">Description: ' + item.fields.description + '</p>'
+                    html += '<p class="card-text">Category: ' + item.fields.category + '</p>'
+                    html += '<p class="card-text">Price: ' + item.fields.price + '</p>'
+                    html += '<a href="/item/add/' + item.pk + '" class="btn btn-outline-dark mx-2">Add</a>'
+                    html += '</div>'
+                })
+                html += '</div>'
+                html += '</div>'
+                document.getElementById("products").innerHTML = html
+            }
+            refreshProducts();
+
+            function addProduct() {
+            fetch("{% url 'main:create_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts)
+
+            document.getElementById("form").reset()
+            return false
+        }
+        document.getElementById("addProduct").onclick = addProduct
+
+        </script>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Amount:</label>
+                                <textarea class="form-control" id="amount" name="amount"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Category:</label>
+                                <textarea class="form-control" id="category" name="category"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">Price:</label>
+                                <input type="number" class="form-control" id="price" name="price"></input>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Sertakan Bootstrap JS (optional) -->
 </body>
 
 </html>
