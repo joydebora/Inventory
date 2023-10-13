@@ -1929,3 +1929,145 @@ Pilihan antara Fetch API dan jQuery akan sangat tergantung pada **kebutuhan dan 
 Untuk proyek PBP kali ini, menurut saya Fetch API merupakan teknologi yang lebih baik untuk digunakan. Karena jika kita mengembangkan aplikasi web modern dan ingin menulis kode yang bersih dan efisien, Fetch API dengan async/await adalah pilihan yang baik. Fetch API memberikan fleksibilitas dan mempercepat performa aplikasi.\
 \
 Tetapi di satu sisi, jika dalam pembuatan suatu app perlu mendukung peramban lama atau kita merasa lebih nyaman dengan sintaksis jQuery, maka menggunakan jQuery bisa menjadi solusi yang baik. Namun, harus ingat bahwa jQuery cenderung lebih besar dari Fetch API sehingga dapat memperlambat performa aplikasi.
+
+## Melakukan add-commit-push ke GitHub.
+Jalankan perintah:
+```
+git add .
+git commit -m "Tugas6"
+git push -u origin main
+```
+
+## Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.
+Buka berkas `requirements.txt` pada root folder dan tambahkan `django-environ` di baris terakhir berkas.\
+\
+Jalankan perintah `pip install -r requirements.txt` untuk menginstal perubahan pada berkas `requirements.txt`\
+\
+Buat berkas baru bernama Procfile (tanpa format ekstensi file) pada root folder dan isi berkas tersebut dengan kode berikut.
+```
+release: django-admin migrate --noinput
+web: gunicorn Inventory.wsgi
+```
+Buat folder baru bernama `.github` pada root folder dan buat folder baru di dalam folder dengan nama `workflows`\
+\
+Buat berkas baru bernama `pbp-deploy.yml` di dalam folder workflows dan isi berkas tersebut dengan kode:
+```
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  Deployment:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cloning repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Push to Dokku server
+      uses: dokku/github-action@master
+      with:
+        branch: 'main'
+        git_remote_url: ssh://dokku@${{ secrets.DOKKU_SERVER_IP }}/${{ secrets.DOKKU_APP_NAME }}
+        ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+```
+Buat berkas baru bernama `.dockerignore` pada root folder dan isi berkas tersebut dengan kode:
+```
+**/*.pyc
+**/*.pyo
+**/*.mo
+**/*.db
+**/*.css.map
+**/*.egg-info
+**/*.sql.gz
+**/__pycache__/
+.cache
+.project
+.idea
+.pydevproject
+.idea/workspace.xml
+.DS_Store
+.git/
+.sass-cache
+.vagrant/
+dist
+docs
+env
+logs
+src/{{ project_name }}/settings/local.py
+src/node_modules
+web/media
+web/static/CACHE
+stats
+Dockerfile
+.gitignore
+Dockerfile
+db.sqlite3
+**/*.md
+logs/
+```
+Buat berkas baru bernama `Dockerfile` pada root folder dan isi berkas tersebut dengan kode:
+```
+FROM python:3.10-slim-buster
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    DJANGO_SETTINGS_MODULE=Inventory.settings \
+    PORT=8000 \
+    WEB_CONCURRENCY=2
+
+# Install system packages required Django.
+RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN addgroup --system django \
+    && adduser --system --ingroup django django
+
+# Requirements are installed here to ensure they will be cached.
+COPY ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+# Copy project code
+COPY . .
+
+RUN python manage.py collectstatic --noinput --clear
+
+# Run as non-root user
+RUN chown -R django:django /app
+USER django
+
+# Run application
+# CMD gunicorn Inventory.wsgi:application
+```
+Buka berkas `settings.py` yang ada di dalam folder Inventory
+```
+...
+import environ
+import os
+...
+env = environ.Env()
+...
+PRODUCTION = env.bool("PRODUCTION", False)
+...
+if PRODUCTION:
+    DATABASES = {
+        "default": env.db("DATABASE_URL")
+    }
+    DATABASES["default"]["ATOMIC_REQUESTS"] = True
+...
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+Menambahkan environment variables pada GitHub repository dengan nama DOKKU_APP_NAME, DOKKU_SERVER_IP, dan DOKKU_SSH_PRIVATE_KEY dengan nilai yang sesuai.
+
+Menjalankan perintah git push untuk melakukan push ke GitHub repository. Setelah itu, GitHub Actions akan menjalankan workflow pbp-deploy.yml dan melakukan deployment aplikasi ke PaaS PBP Fasilkom UI.
+
+Aplikasi telah berhasil di-deploy ke PaaS PBP Fasilkom UI. Aplikasi dapat diakses pada http://joy-debora-tugas.pbp.cs.ui.ac.id./
