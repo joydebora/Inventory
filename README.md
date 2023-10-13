@@ -1721,6 +1721,9 @@ Tailwind CSS dan Bootstrap adalah dua framework CSS yang populer digunakan dalam
 **Kelas: PBP D**
 
 # CHECKLIST TUGAS
+![AppAjax](https://i.postimg.cc/X7LBCqkC/Whats-App-Image-2023-10-13-at-09-12-09-1.jpg)
+![AppAjax1](https://i.postimg.cc/VNxJ8Cm3/Whats-App-Image-2023-10-13-at-09-12-35-1.jpg)
+
 ## AJAX GET
 ## 1. Ubahlah kode cards data item agar dapat mendukung AJAX GET dan Lakukan pengambilan item menggunakan AJAX GET.
 ### Membuat Modal Sebagai Form untuk Menambahkan Produk
