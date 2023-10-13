@@ -1714,3 +1714,217 @@ Tailwind CSS dan Bootstrap adalah dua framework CSS yang populer digunakan dalam
 - Bootstrap sangat berguna ketika ingin membangun tampilan dengan cepat menggunakan komponen yang telah ada.
 - Ini cocok untuk proyek yang memerlukan responsivitas dan desain yang dapat diandalkan di berbagai perangkat.
 - Bootstrap adalah pilihan yang baik jika ingin menghemat waktu dalam pengembangan.
+
+# TUGAS 6
+**Nama: Joy Debora Sitorus**\
+**NPM: 2206082991**\
+**Kelas: PBP D**
+
+# CHECKLIST TUGAS
+## AJAX GET
+## 1. Ubahlah kode cards data item agar dapat mendukung AJAX GET dan Lakukan pengambilan item menggunakan AJAX GET.
+### Membuat Modal Sebagai Form untuk Menambahkan Produk
+```
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="col-form-label">Category:</label>
+                        <input type="text" class="form-control" id="category" name="category"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addProduct" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+## AJAX POST
+## 2. Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
+Modal di-trigger dengan menekan suatu tombol pada halaman utama. Saat penambahan item berhasil, modal harus ditutup dan input form harus dibersihkan dari data yang sudah dimasukkan ke dalam form sebelumnya.
+```
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+```
+    
+## 3. Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
+### Membuat Fungsi untuk Menambahkan Produk dengan AJAX
+ 
+```
+from django.views.decorators.csrf import csrf_exempt
+```
+
+```
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+```
+
+```
+@csrf_exempt
+def create_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        category = request.POST.get("category")
+        price = request.POST.get("price")
+        user = request.user
+
+        new_product = Product(name=name, amount=amount, description=description, category=category, price=price, user=user)
+        new_product.save()
+
+        return HttpResponse("CREATED", status=201)
+
+    return HttpResponseNotFound()
+```
+
+## 4. Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+### Menambahkan routing untuk fungsi yang telah dibuat
+```
+from main.views import get_product_json, create_ajax
+```
+
+```
+path('get-product/', get_product_json, name='get_product_json'),
+path('create-ajax/', create_ajax, name='create_ajax'),
+```
+
+## 5.  Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+### Menambahkan routing untuk fungsi yang telah dibuat
+```
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}")
+            .then(response => response.json())
+    }
+</script>
+```
+
+```
+<script>
+    ...
+    function addProduct() {
+        fetch("{% url 'main:create_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("addProduct").onclick = addProduct
+</script>
+```
+
+## 6.  Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+```
+<script>
+    ...
+    async function refreshProducts() {
+        document.getElementById("products").innerHTML = ""
+        const products = await getProducts()
+        const length = Object.keys(products).length
+        let html = '<div class="container">'
+        html += '<p class="lead text-muted">Total Item: ' + length + '</p>'
+        html += '<div class="row row-cols-3">';
+        products.forEach((item) => {
+            html += '<div class="col-md-6 col-lg-4 mb-5">'
+            html += '<div class="card text-white" style="border-radius: 1rem; background-color: #F2BED1;">'
+            html += '<div class="card-body">'
+            html += '<h5 class="card-title" style="color: #B0578D">' + item.fields.name + '</h5>'
+            html += '<p class="card-text">Amount: ' + item.fields.amount + '</p>'
+            html += '<p class="card-text">Description: ' + item.fields.description + '</p>'
+            html += '<p class="card-text">Category: ' + item.fields.category + '</p>'
+            html += '<p class="card-text">Price: ' + item.fields.price + '</p>'
+            html += '<a href="/item/add/' + item.pk + '" class="btn btn-outline-dark mx-2">Add</a>'
+            html += '</div>'
+        })
+        html += '</div>'
+        html += '</div>'
+        document.getElementById("products").innerHTML = html
+    }
+    refreshProducts();
+</script>
+```
+
+## 7. Melakukan perintah collectstatic
+Jalankan perintah `python manage.py collectstatic`
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+1. Synchronous Programming:
+- Dalam synchronous programming, kode dieksekusi secara berurutan dari atas ke bawah. Setiap operasi I/O atau pemrosesan yang memerlukan waktu akan menghentikan eksekusi kode sampai operasi tersebut selesai.
+- Pemrograman sinkronus sederhana dan mudah dipahami, tetapi dapat menghambat aplikasi dalam situasi di mana ada banyak operasi I/O yang perlu dijalankan secara bersamaan.
+
+2. Asynchronous Programming:
+- Dalam asynchronous programming, Anda dapat menjalankan beberapa tugas atau operasi I/O secara bersamaan tanpa harus menunggu satu tugas selesai sebelum menjalankan yang lain.
+- Pemrograman asinkronus memungkinkan aplikasi untuk tetap responsif dan menjawab permintaan tanpa penundaan yang berlebihan, terutama dalam situasi dengan banyak operasi I/O seperti server web yang harus menangani banyak permintaan sekaligus.
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+**Paradigma Event-Driven Programming** adalah pendekatan pemrograman di mana logika aplikasi merespons peristiwa atau tindakan yang terjadi pada program. Peristiwa ini dapat melibatkan tindakan pengguna seperti mengklik tombol, memasukkan teks, atau menggerakkan mouse. Paradigma ini memungkinkan program untuk berinteraksi secara dinamis dengan pengguna dan lingkungannya, merespons perubahan tanpa perlu memeriksa kondisi secara berulang atau melakukan polling terus-menerus.
+
+**Contoh Penerapan Paradigma Event-Driven**
+1. Ketika Tombol "Add Product by AJAX" Diklik
+```
+document.getElementById("addProduct").onclick = addProduct;
+```
+Saat tombol dengan ID "addProduct" diklik, event click dipicu. Fungsi `addProduct()` akan dieksekusi ketika event ini terjadi. Di dalamnya, terjadi penggunaan AJAX untuk mengirim data formulir ke server.
+
+2. Ketika Data Produk Diterima dari Server
+```
+function getProducts() {
+    return fetch("{% url 'main:get_product_json' %}")
+        .then(response => response.json())
+        .then(products => {
+            // Logika untuk memproses produk yang diterima dari server
+        });
+}
+```
+Dalam fungsi `getProducts()`, event-driven programming terlihat melalui penggunaan fetch API. Saat permintaan AJAX selesai dan data produk diterima dari server, event `then()` dipicu, memungkinkan Anda untuk merespons data yang diterima dari server.
+
+## Jelaskan penerapan asynchronous programming pada AJAX.
+**Asynchronous programming** adalah paradigma pemrograman di mana operasi-operasi yang memerlukan waktu, seperti permintaan jaringan (seperti AJAX), file I/O, atau operasi basis data, dapat dieksekusi secara non-blokcing.\
+Dalam konteks AJAX, asynchronous programming memungkinkan Anda membuat permintaan ke server tanpa menghentikan eksekusi program yang lain. Ini berarti bahwa sementara permintaan ke server sedang dalam proses, aplikasi Anda tetap responsif dan dapat menjalankan operasi-operasi lain.
+
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Fetch API dan jQuery adalah dua pendekatan yang berbeda untuk melakukan permintaan AJAX dalam pengembangan web. Perbandingan keduanya:
+1. Fetch API:
+- Native JavaScript: Fetch API adalah bagian dari JavaScript modern dan merupakan bagian dari standar web. Ini berarti Anda tidak perlu mengunduh atau menginstal perpustakaan tambahan. Ini adalah solusi native yang berfungsi baik pada berbagai platform dan peramban.
+- Promise-Based: Fetch API menggunakan promise, yang memungkinkan Anda menulis kode asynchronous yang bersih dan mudah dimengerti dengan async/await. Ini mempermudah penanganan permintaan asynchronous dan menghindari callback hell.
+- Lebih Ringan: Fetch API lebih ringan daripada jQuery karena fokusnya hanya pada fitur permintaan HTTP, tanpa menyertakan banyak fitur tambahan yang mungkin tidak digunakan.
+
+2. jQuery:
+- Kompatibilitas Lintas Peramban: jQuery dirancang untuk mengatasi perbedaan dalam perilaku peramban. Ini dapat membuatnya berguna jika Anda harus mendukung peramban lama yang mungkin tidak mendukung fitur modern seperti Fetch API.
+- Sintaksis yang Mudah: jQuery memiliki sintaksis yang sederhana dan mudah dimengerti, terutama bagi pengembang yang kurang berpengalaman. Ini memungkinkan untuk melakukan permintaan AJAX dengan hanya beberapa baris kode.
+- Plugin Ekstensif: jQuery memiliki beragam plugin dan ekstensi yang dapat membantu dengan tugas-tugas khusus seperti animasi, manipulasi DOM, dan validasi formulir.
+
+Pilihan antara Fetch API dan jQuery akan sangat tergantung pada kebutuhan dan konteks proyek. Untuk proyek PBP kali ini, menurut saya Fetch API merupakan teknologi yang lebih baik untuk digunakan.\
+Karena jika kita mengembangkan aplikasi web modern dan ingin menulis kode yang bersih dan efisien, Fetch API dengan async/await adalah pilihan yang baik. Fetch API memberikan fleksibilitas dan mempercepat performa aplikasi.\
+\
+Tetapi di satu sisi, jika dalam pembuatan suatu app perlu mendukung peramban lama atau kita merasa lebih nyaman dengan sintaksis jQuery, maka menggunakan jQuery bisa menjadi solusi yang baik. Namun, harus ingat bahwa jQuery cenderung lebih besar dari Fetch API sehingga dapat memperlambat performa aplikasi.
