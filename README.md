@@ -1914,15 +1914,16 @@ Dalam konteks AJAX, asynchronous programming memungkinkan Anda membuat permintaa
 
 ## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
 Fetch API dan jQuery adalah dua pendekatan yang berbeda untuk melakukan permintaan AJAX dalam pengembangan web. Perbandingan keduanya:
-1. *Fetch API:*
+1. **Fetch API:**
 - Native JavaScript: Fetch API adalah bagian dari JavaScript modern dan merupakan bagian dari standar web. Ini berarti Anda tidak perlu mengunduh atau menginstal perpustakaan tambahan. Ini adalah solusi native yang berfungsi baik pada berbagai platform dan peramban.
 - Promise-Based: Fetch API menggunakan promise, yang memungkinkan Anda menulis kode asynchronous yang bersih dan mudah dimengerti dengan async/await. Ini mempermudah penanganan permintaan asynchronous dan menghindari callback hell.
 - Lebih Ringan: Fetch API lebih ringan daripada jQuery karena fokusnya hanya pada fitur permintaan HTTP, tanpa menyertakan banyak fitur tambahan yang mungkin tidak digunakan.
 
-2. *jQuery:*
+2. **jQuery:**
 - Kompatibilitas Lintas Peramban: jQuery dirancang untuk mengatasi perbedaan dalam perilaku peramban. Ini dapat membuatnya berguna jika Anda harus mendukung peramban lama yang mungkin tidak mendukung fitur modern seperti Fetch API.
 - Sintaksis yang Mudah: jQuery memiliki sintaksis yang sederhana dan mudah dimengerti, terutama bagi pengembang yang kurang berpengalaman. Ini memungkinkan untuk melakukan permintaan AJAX dengan hanya beberapa baris kode.
 - Plugin Ekstensif: jQuery memiliki beragam plugin dan ekstensi yang dapat membantu dengan tugas-tugas khusus seperti animasi, manipulasi DOM, dan validasi formulir.
+
 
 Pilihan antara Fetch API dan jQuery akan sangat tergantung pada **kebutuhan dan konteks proyek**.\
 \
