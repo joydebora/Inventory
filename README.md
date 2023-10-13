@@ -1878,11 +1878,11 @@ path('create-ajax/', create_ajax, name='create_ajax'),
 Jalankan perintah `python manage.py collectstatic`
 
 ## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
-1. Synchronous Programming:
+1. **Synchronous Programming:**
 - Dalam synchronous programming, kode dieksekusi secara berurutan dari atas ke bawah. Setiap operasi I/O atau pemrosesan yang memerlukan waktu akan menghentikan eksekusi kode sampai operasi tersebut selesai.
 - Pemrograman sinkronus sederhana dan mudah dipahami, tetapi dapat menghambat aplikasi dalam situasi di mana ada banyak operasi I/O yang perlu dijalankan secara bersamaan.
 
-2. Asynchronous Programming:
+2. **Asynchronous Programming:**
 - Dalam asynchronous programming, Anda dapat menjalankan beberapa tugas atau operasi I/O secara bersamaan tanpa harus menunggu satu tugas selesai sebelum menjalankan yang lain.
 - Pemrograman asinkronus memungkinkan aplikasi untuk tetap responsif dan menjawab permintaan tanpa penundaan yang berlebihan, terutama dalam situasi dengan banyak operasi I/O seperti server web yang harus menangani banyak permintaan sekaligus.
 
@@ -1914,17 +1914,18 @@ Dalam konteks AJAX, asynchronous programming memungkinkan Anda membuat permintaa
 
 ## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
 Fetch API dan jQuery adalah dua pendekatan yang berbeda untuk melakukan permintaan AJAX dalam pengembangan web. Perbandingan keduanya:
-1. Fetch API:
+1. *Fetch API:*
 - Native JavaScript: Fetch API adalah bagian dari JavaScript modern dan merupakan bagian dari standar web. Ini berarti Anda tidak perlu mengunduh atau menginstal perpustakaan tambahan. Ini adalah solusi native yang berfungsi baik pada berbagai platform dan peramban.
 - Promise-Based: Fetch API menggunakan promise, yang memungkinkan Anda menulis kode asynchronous yang bersih dan mudah dimengerti dengan async/await. Ini mempermudah penanganan permintaan asynchronous dan menghindari callback hell.
 - Lebih Ringan: Fetch API lebih ringan daripada jQuery karena fokusnya hanya pada fitur permintaan HTTP, tanpa menyertakan banyak fitur tambahan yang mungkin tidak digunakan.
 
-2. jQuery:
+2. *jQuery:*
 - Kompatibilitas Lintas Peramban: jQuery dirancang untuk mengatasi perbedaan dalam perilaku peramban. Ini dapat membuatnya berguna jika Anda harus mendukung peramban lama yang mungkin tidak mendukung fitur modern seperti Fetch API.
 - Sintaksis yang Mudah: jQuery memiliki sintaksis yang sederhana dan mudah dimengerti, terutama bagi pengembang yang kurang berpengalaman. Ini memungkinkan untuk melakukan permintaan AJAX dengan hanya beberapa baris kode.
 - Plugin Ekstensif: jQuery memiliki beragam plugin dan ekstensi yang dapat membantu dengan tugas-tugas khusus seperti animasi, manipulasi DOM, dan validasi formulir.
 
-Pilihan antara Fetch API dan jQuery akan sangat tergantung pada kebutuhan dan konteks proyek. Untuk proyek PBP kali ini, menurut saya Fetch API merupakan teknologi yang lebih baik untuk digunakan.\
-Karena jika kita mengembangkan aplikasi web modern dan ingin menulis kode yang bersih dan efisien, Fetch API dengan async/await adalah pilihan yang baik. Fetch API memberikan fleksibilitas dan mempercepat performa aplikasi.\
+Pilihan antara Fetch API dan jQuery akan sangat tergantung pada **kebutuhan dan konteks proyek**.\
+\
+Untuk proyek PBP kali ini, menurut saya Fetch API merupakan teknologi yang lebih baik untuk digunakan. Karena jika kita mengembangkan aplikasi web modern dan ingin menulis kode yang bersih dan efisien, Fetch API dengan async/await adalah pilihan yang baik. Fetch API memberikan fleksibilitas dan mempercepat performa aplikasi.\
 \
 Tetapi di satu sisi, jika dalam pembuatan suatu app perlu mendukung peramban lama atau kita merasa lebih nyaman dengan sintaksis jQuery, maka menggunakan jQuery bisa menjadi solusi yang baik. Namun, harus ingat bahwa jQuery cenderung lebih besar dari Fetch API sehingga dapat memperlambat performa aplikasi.
