@@ -1895,6 +1895,21 @@ path('create-ajax/', create_ajax, name='create_ajax'),
     refreshProducts();
 </script>
 ```
+**Penjelasan alur:**
+1. *Penetapan Produk Element Kosong:*
+Pertama-tama, fungsi ini mengosongkan elemen dengan ID products. Dalam hal ini, isi dari elemen ini akan digantikan dengan produk-produk yang akan diambil dari server.
+
+2. *Permintaan Produk Melalui getProducts:*
+Selanjutnya, fungsi menunggu permintaan data produk menggunakan fungsi getProducts. Dengan menggunakan kata kunci await, fungsi refreshProducts berhenti mengeksekusi sampai permintaan data produk selesai dan hasilnya tersedia.
+
+3. *Pembuatan HTML untuk Produk:*
+Setelah data produk diterima, fungsi ini membuat HTML untuk menampilkan produk. Ini melibatkan membuat tag HTML yang sesuai dengan data produk yang diterima. Setiap produk ditampilkan dalam sebuah kartu `<div class="card">` dengan informasi seperti nama, jumlah, deskripsi, kategori, dan harga.
+
+4. *Penyisipan HTML Produk ke dalam Halaman:*
+Setelah HTML produk dibuat, variabel html yang berisi HTML produk disisipkan ke dalam elemen dengan ID products. Dengan ini, data produk akan ditampilkan secara dinamis pada halaman web tanpa memuat ulang seluruh halaman.
+
+5. Pemanggilan Fungsi refreshProducts:*
+Terakhir, fungsi refreshProducts dipanggil pada akhir kode, yang berarti setiap kali halaman dimuat atau fungsi ini dipanggil secara manual, data produk akan diambil dan ditampilkan ulang sesuai dengan alur di atas.
 
 ## 7. Melakukan perintah collectstatic
 Jalankan perintah `python manage.py collectstatic`
