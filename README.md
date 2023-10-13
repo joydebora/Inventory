@@ -1723,11 +1723,13 @@ Tailwind CSS dan Bootstrap adalah dua framework CSS yang populer digunakan dalam
 # CHECKLIST TUGAS
 ![AppAjax](https://i.postimg.cc/X7LBCqkC/Whats-App-Image-2023-10-13-at-09-12-09-1.jpg)
 \
+\
 ![AppAjax1](https://i.postimg.cc/VNxJ8Cm3/Whats-App-Image-2023-10-13-at-09-12-35-1.jpg)
 
 ## AJAX GET
 ## 1. Ubahlah kode cards data item agar dapat mendukung AJAX GET dan Lakukan pengambilan item menggunakan AJAX GET.
 ### Membuat Modal Sebagai Form untuk Menambahkan Produk
+Pada berkas `main.html` di folder templates, subdirektori main, menambahkan class modal sebagai berikut:
 ```
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -1769,6 +1771,21 @@ Tailwind CSS dan Bootstrap adalah dua framework CSS yang populer digunakan dalam
     </div>
 </div>
 ```
+**Penjelasan alur:**
+1. Pemanggilan Modal:
+Modal ditentukan dalam HTML dengan ID exampleModal. Saat sebuah elemen, seperti tombol atau link, mengarahkan untuk membuka modal, atribut data-bs-toggle dan data-bs-target digunakan untuk mengidentifikasi modal yang akan muncul. Ketika elemen ini ditekan atau diklik, modal muncul di atas halaman.
+2. Isi Modal:
+Di dalam modal, terdapat elemen-elemen seperti judul `<h1>`, formulir `<form>`, dan tombol-tombol `<button>` untuk mengelola operasi-operasi yang ingin dilakukan pengguna.
+3. Formulir dan Pengiriman Data:
+- Pengguna memasukkan data produk seperti nama, jumlah, deskripsi, kategori, dan harga melalui input dan area teks.
+- Formulir memilik atribut onsubmit="return false;" untuk mencegah pengiriman formulir secara tradisional. Ini menghentikan pengiriman formulir bawaan browser dan memungkinkan kita menangani pengiriman data dengan JavaScript.
+4. Penanganan Data dengan JavaScript:
+- Ketika pengguna mengklik tombol "Add Product," fungsi JavaScript (addProduct()) akan dipanggil.
+- Dalam fungsi addProduct(), data dari formulir diambil menggunakan JavaScript (menggunakan document.getElementById atau metode serupa) dan dapat diteruskan ke server melalui permintaan AJAX (Fetch API, XMLHttpRequest, dll.).
+- Data produk dapat diproses lebih lanjut, seperti validasi, manipulasi, atau penyimpanan ke database, tergantung pada kebutuhan aplikasi Anda.
+5. Penutup Modal:
+- Modal dapat ditutup dengan beberapa cara: mengklik tombol "Close" di sudut kanan atas modal atau dengan menggunakan metode JavaScript. Dalam contoh ini, tombol "Close" diimplementasikan dengan atribut data-bs-dismiss="modal" pada elemen button.
+
 
 ## AJAX POST
 ## 2. Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
